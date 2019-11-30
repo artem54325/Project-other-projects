@@ -4,32 +4,41 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using ProjectAboutProjects.DAL;
 using ProjectAboutProjects.Models;
 
 namespace ProjectAboutProjects.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index()
+        private readonly MySqlContext context;
+
+        public HomeController(MySqlContext _context)
+        {//IHttpActionResult
+            //https://docs.microsoft.com/ru-ru/aspnet/web-api/overview/getting-started-with-aspnet-web-api/tutorial-your-first-web-api
+            context = _context;
+        }
+
+        public async Task<ActionResult> Index()
         {
             return View();
         }
 
-        public IActionResult About()
+        public async Task<ActionResult> About()
         {
             ViewData["Message"] = "Your application description page.";
 
             return View();
         }
 
-        public IActionResult Contact()
+        public async Task<ActionResult> Contact()
         {
             ViewData["Message"] = "Your contact page.";
 
             return View();
         }
 
-        public IActionResult Privacy()
+        public async Task<ActionResult> Privacy()
         {
             return View();
         }

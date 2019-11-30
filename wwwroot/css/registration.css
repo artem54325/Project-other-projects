@@ -1,0 +1,58 @@
+.title-registration{
+    text-align: center;
+    font-size: 36px;
+    padding-top: 10px;
+    color: #fff;
+    font-weight: bold;
+    text-shadow: #000 0 0 6px;
+}
+
+.input-registration[type=text], .input-registration[type=password] {
+    width: 400px;
+    padding: 15px;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+    border-radius: 30px;
+  }
+  
+  .input-registration[type=text]:focus, .input-registration[type=password]:focus {
+    background-color: #ddd;
+    outline: none;
+    font-size: 14sp;
+  }
+
+  .name-input-registration{
+      font-size: 18px;
+      color: #fff;
+      font-weight: bold;
+      text-shadow: #000 0 0 6px;
+  }
+
+  .container-registration{
+    overflow: hidden;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 0px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    padding: 0px;
+    text-align:center;
+  }
+
+  .button-registration{
+    font-size: 18px;
+    color: #fff;
+    font-weight: bold;
+    text-shadow: #000 0 0 6px;
+    background: rgb(119, 119, 119);
+    margin-top: 50px;
+    width: 300px;
+    height: 40px;
+    border-radius: 30px;
+    box-shadow:0 1px 2px #5e5d5b;
+  }
+
+  .status-registration{
+      background: green;
+  }

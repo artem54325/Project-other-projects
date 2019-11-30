@@ -2,15 +2,64 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
+    <DockerComposeProjectPath>docker-compose.dcproj</DockerComposeProjectPath>
+    <UserSecretsId>0846f727-8aff-415e-9047-785468d09507</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" Version="$(AspNetCoreAppRuntimeFrameworkVersion)">
       <IsImplicitlyDefined>true</IsImplicitlyDefined>
-      <PrivateAssets>All</PrivateAssets>
+      <PrivateAssets>all</PrivateAssets>
       <Publish>true</Publish>
     </PackageReference>
-    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.AspNet.Mvc" Version="5.2.7" />
+    <PackageReference Include="WindowsAzure.Storage" Version="9.3.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="2.1.6" />
+    <PackageReference Include="MySql.Data.EntityFrameworkCore" Version="8.0.18" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="2.1.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.1.11" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Formatters.Json" Version="2.1.2" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="DAL\" />
+    <Folder Include="wwwroot\images\auth\" />
+    <Folder Include="wwwroot\images\video\" />
+    <Folder Include="Views\User\" />
+    <Folder Include="wwwroot\js\auth\" />
+    <Folder Include="Views\Stream\" />
+    <Folder Include="Views\VideoCall\" />
+    <Folder Include="wwwroot\js\video\" />
+    <Folder Include="Hubs\" />
+    <Folder Include="Views\Player\" />
+    <Folder Include="wwwroot\js\browser\" />
+    <Folder Include="Resources\" />
+    <Folder Include="Resources\Views\" />
+    <Folder Include="Resources\Views\Home\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Controllers\HomeApiController.cs" />
+    <Compile Remove="Views\Settings\Index.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Remove="wwwroot\css\authorization.css" />
+    <Content Remove="wwwroot\js\video\site.min.js" />
+    <Content Remove="wwwroot\js\browser\signalr %28копировать%29.min.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Resources\Views\Home\Index.ru.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Index.ru.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Resources\Views\Home\Index.ru.Designer.cs">
+      <DependentUpon>Index.ru.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.AspNetCore.Mvc.Core, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60" />
+  </ItemGroup>
 </Project>

@@ -1,0 +1,86 @@
+.title-settings{
+    text-align: center;
+    font-size: 36px;
+    padding-top: 10px;
+    color: #fff;
+    font-weight: bold;
+    text-shadow: #000 0 0 6px;
+}
+
+.input-settings[type=text], .input-settings[type=password] {
+    width: 400px;
+    padding: 15px;
+    height: 40px;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+    border-radius: 30px;
+  }
+  
+  .input-settings[type=text]:focus, .input-settings[type=password]:focus {
+    background-color: #ddd;
+    outline: none;
+    font-size: 14sp;
+    height: 40px;
+  }
+
+  .menu-settings{
+    text-align: center;
+  }
+
+  .name-input-registration{
+      font-size: 18px;
+      color: #fff;
+      font-weight: bold;
+      text-shadow: #000 0 0 6px;
+  }
+
+  .container-registration{
+    overflow: hidden;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 0px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    padding: 0px;
+    text-align:center;
+  }
+
+  .button-registration{
+    font-size: 18px;
+    color: #fff;
+    font-weight: bold;
+    text-shadow: #000 0 0 6px;
+    background: rgb(119, 119, 119);
+    margin-top: 50px;
+    width: 300px;
+    height: 40px;
+    vertical-align: middle;
+    border-radius: 30px;
+    box-shadow:0 1px 2px #5e5d5b;
+  }
+
+  .status-registration{
+      background: green;
+  }
+
+  .save-settings{
+    font-size: 18px;
+    color: #fff;
+    font-weight: bold;
+    text-shadow: #000 0 0 6px;
+    background: rgb(119, 119, 119);
+    width: 150px;
+    height: 40px;
+    vertical-align: middle;
+    border-radius: 30px;
+    box-shadow:0 1px 2px #5e5d5b;
+    margin-left: 15px;
+  }
+
+  .label-settings{
+    font-size: 18px;
+    color: #fff;
+    font-weight: bold;
+    text-shadow: #000 0 0 6px;
+  }
