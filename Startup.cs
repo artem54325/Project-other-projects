@@ -86,7 +86,7 @@ namespace ProjectAboutProjects
 
             var supportedCultures = new[]
             {
-                new CultureInfo("en-US"),
+                new CultureInfo("en-EN"),
                 new CultureInfo("ru-RU")
             };
             var localizationOptions = new RequestLocalizationOptions
