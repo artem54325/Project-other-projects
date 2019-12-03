@@ -29,7 +29,6 @@
     <Folder Include="wwwroot\images\video\" />
     <Folder Include="Views\User\" />
     <Folder Include="wwwroot\js\auth\" />
-    <Folder Include="Views\Stream\" />
     <Folder Include="Views\VideoCall\" />
     <Folder Include="wwwroot\js\video\" />
     <Folder Include="Hubs\" />
@@ -47,17 +46,6 @@
     <Content Remove="wwwroot\css\authorization.css" />
     <Content Remove="wwwroot\js\video\site.min.js" />
     <Content Remove="wwwroot\js\browser\signalr %28копировать%29.min.js" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Update="Resources\Views\Home\Index.ru.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Index.ru.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Update="Resources\Views\Home\Index.ru.Designer.cs">
-      <DependentUpon>Index.ru.resx</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.AspNetCore.Mvc.Core, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60" />

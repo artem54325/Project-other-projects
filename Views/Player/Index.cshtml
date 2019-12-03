@@ -1,9 +1,9 @@
-﻿@{
+@{
     Layout = "_LayoutVideo";
     ViewData["Title"] = "Stream";
 }
 <script src="https://cdn.jsdelivr.net/npm/js-cookie@beta/dist/js.cookie.min.js"></script>
-<script src="~/js/video/player.js" asp-append-version="true" defer="defer"></script>
+<script src="~/js/video/stream.js" asp-append-version="true" defer="defer"></script>
 <script src="~/js/video/player_list.js" asp-append-version="true" type="module" defer="defer"></script>
 <div id="funct-video">
     <img class="img-funct-video" id="camera" src="~/images/video/camera.png"/>
@@ -12,12 +12,4 @@
       <div id="sound-volume-funct-video">
           <source src="http://lel.com/link/to/stream.m3u">
       </div>
-    <div id="list-urls">
-        <p>List of urls:
-			<input id="addList" type = "text" list = "airports">
-        <button  id="show">Show</button>
-		</p>
-        <datalist id = "airports">
-		</datalist>
-    </div>
   </div>

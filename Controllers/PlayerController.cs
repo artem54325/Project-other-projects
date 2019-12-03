@@ -28,5 +28,10 @@ namespace ProjectAboutProjects.Controllers
         {
             return View("ExampleStream");
         }
+
+        public async Task<ActionResult> Stream()
+        {
+            return View("Index");
+        }
     }
 }
