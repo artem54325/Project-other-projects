@@ -11,13 +11,17 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Localization;
+using Microsoft.AspNetCore.Localization.Routing;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Routing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using ProjectAboutProjects.DAL;
 using ProjectAboutProjects.Models;
+using RouteDataRequestCultureProvider = ProjectAboutProjects.DAL.RouteDataRequestCultureProvider;
 
 namespace ProjectAboutProjects
 {
@@ -42,22 +46,33 @@ namespace ProjectAboutProjects
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services.Configure<RequestLocalizationOptions>(options =>
-            {
-                options.RequestCultureProviders.Insert(0, new CustomRequestCultureProvider(context =>
-                {
-                    var userLangs = context.Request.Headers["Accept-Language"].ToString();
-                    var firstLang = userLangs.Split(',').FirstOrDefault();
-                    var defaultLang = string.IsNullOrEmpty(firstLang) ? "en-EN" : firstLang;
-                    return Task.FromResult(new ProviderCultureResult(defaultLang, defaultLang));
-                }));
-            });
-
             services.AddMvcCore().AddAuthorization();
             services.AddSignalR();
 
             services.AddMvc().AddViewLocalization();
             services.AddLocalization(options => options.ResourcesPath = "Resources");
+
+            services.Configure<RequestLocalizationOptions>(options =>
+            {
+                var supportedCultures = new[]
+                {
+                    new CultureInfo("en-US"),
+                    new CultureInfo("tr-TR"),
+                };
+
+                options.DefaultRequestCulture = new RequestCulture(culture: "en-US", uiCulture: "en-US");
+                options.SupportedCultures = supportedCultures;
+                options.SupportedUICultures = supportedCultures;
+                options.RequestCultureProviders = new[]{ new RouteDataRequestCultureProvider{
+                    IndexOfCulture=1,
+                    IndexofUICulture=1
+                }};
+            });
+
+            services.Configure<RouteOptions>(options =>
+            {
+                options.ConstraintMap.Add("culture", typeof(LanguageRouteConstraint));
+            });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
@@ -88,8 +103,11 @@ namespace ProjectAboutProjects
                 }
             };
 
+            var locOptions = app.ApplicationServices.GetService<IOptions<RequestLocalizationOptions>>();
+            app.UseRequestLocalization(locOptions.Value);
+
             //app.UseJwtBearerAuthentication(options);
-            app.UseMvcWithDefaultRoute();
+            //app.UseMvcWithDefaultRoute();
             app.UseMvc().UseMvcWithDefaultRoute();
             app.UseHttpsRedirection();
             app.UseStaticFiles();
@@ -98,27 +116,27 @@ namespace ProjectAboutProjects
 
             var supportedCultures = new[]
             {
-                new CultureInfo("en-EN"),
-                new CultureInfo("ru-RU")
+                new CultureInfo("en"),
+                new CultureInfo("ru")
             };
-            var localizationOptions = new RequestLocalizationOptions
-            {
-                //https://stackoverflow.com/questions/39006690/asp-net-core-request-localization-options
-                //https://docs.microsoft.com/ru-ru/aspnet/core/fundamentals/localization?view=aspnetcore-3.1
-                //https://damienbod.com/2014/03/20/web-api-localization/
-                //https://docs.devexpress.com/AspNet/3847/aspnet-webforms-controls/scheduler/examples/customization/appearance/how-to-customize-resource-headers
-                DefaultRequestCulture = new RequestCulture("en-EN"),
-                SupportedCultures = supportedCultures,
-                SupportedUICultures = supportedCultures
-            };
+            //var localizationOptions = new RequestLocalizationOptions
+            //{
+            //    //https://stackoverflow.com/questions/39006690/asp-net-core-request-localization-options
+            //    //https://docs.microsoft.com/ru-ru/aspnet/core/fundamentals/localization?view=aspnetcore-3.1
+            //    //https://damienbod.com/2014/03/20/web-api-localization/
+            //    //https://docs.devexpress.com/AspNet/3847/aspnet-webforms-controls/scheduler/examples/customization/appearance/how-to-customize-resource-headers
+            //    DefaultRequestCulture = new RequestCulture("en"),
+            //    SupportedCultures = supportedCultures,
+            //    SupportedUICultures = supportedCultures
+            //};
 
-            var cookieProvider = localizationOptions.RequestCultureProviders
-                .OfType<CookieRequestCultureProvider>()
-                .First();
+            //var cookieProvider = localizationOptions.RequestCultureProviders
+            //    .OfType<CookieRequestCultureProvider>()
+            //    .First();
 
-            cookieProvider.CookieName = "UserCulture";
+            //app.UseRequestLocalization(localizationOptions);
 
-            app.UseRequestLocalization(localizationOptions);
+            //cookieProvider.CookieName = "UserCulture";
 
             app.UseSignalR(routes =>
             {
@@ -129,7 +147,7 @@ namespace ProjectAboutProjects
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{culture=en}/{controller=Home}/{action=Index}/{id?}");
             });
         }
     }

@@ -24,7 +24,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="DAL\" />
     <Folder Include="wwwroot\images\auth\" />
     <Folder Include="wwwroot\images\video\" />
     <Folder Include="Views\User\" />
@@ -34,9 +33,6 @@
     <Folder Include="Hubs\" />
     <Folder Include="Views\Player\" />
     <Folder Include="wwwroot\js\browser\" />
-    <Folder Include="Resources\" />
-    <Folder Include="Resources\Views\" />
-    <Folder Include="Resources\Views\Home\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Controllers\HomeApiController.cs" />
