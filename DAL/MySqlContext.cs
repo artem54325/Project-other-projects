@@ -13,7 +13,7 @@ namespace ProjectAboutProjects.DAL
 
         public MySqlContext(DbContextOptions options) : base(options)
         {
-            this.Database.EnsureCreated();
+            //this.Database.EnsureCreated();
         }
 
         protected MySqlContext()

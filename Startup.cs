@@ -41,6 +41,18 @@ namespace ProjectAboutProjects
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
+
+            services.Configure<RequestLocalizationOptions>(options =>
+            {
+                options.RequestCultureProviders.Insert(0, new CustomRequestCultureProvider(context =>
+                {
+                    var userLangs = context.Request.Headers["Accept-Language"].ToString();
+                    var firstLang = userLangs.Split(',').FirstOrDefault();
+                    var defaultLang = string.IsNullOrEmpty(firstLang) ? "en-EN" : firstLang;
+                    return Task.FromResult(new ProviderCultureResult(defaultLang, defaultLang));
+                }));
+            });
+
             services.AddMvcCore().AddAuthorization();
             services.AddSignalR();
 
@@ -91,7 +103,11 @@ namespace ProjectAboutProjects
             };
             var localizationOptions = new RequestLocalizationOptions
             {
-                DefaultRequestCulture = new RequestCulture("en-US"),
+                //https://stackoverflow.com/questions/39006690/asp-net-core-request-localization-options
+                //https://docs.microsoft.com/ru-ru/aspnet/core/fundamentals/localization?view=aspnetcore-3.1
+                //https://damienbod.com/2014/03/20/web-api-localization/
+                //https://docs.devexpress.com/AspNet/3847/aspnet-webforms-controls/scheduler/examples/customization/appearance/how-to-customize-resource-headers
+                DefaultRequestCulture = new RequestCulture("en-EN"),
                 SupportedCultures = supportedCultures,
                 SupportedUICultures = supportedCultures
             };
