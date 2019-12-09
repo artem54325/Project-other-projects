@@ -27,6 +27,8 @@ namespace ProjectAboutProjects.Controllers
         public async Task<ActionResult> About()
         {
             ViewData["Message"] = "Your application description page.";
+            //HttpContext.Response.Cookies["lang"].Value = "en";
+            HttpContext.Response.Cookies.Append("lang", "en");
 
             return View();
         }
@@ -34,6 +36,7 @@ namespace ProjectAboutProjects.Controllers
         public async Task<ActionResult> Contact()
         {
             ViewData["Message"] = "Your contact page.";
+            HttpContext.Response.Cookies.Append("lang", "tr");
 
             return View();
         }

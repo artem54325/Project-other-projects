@@ -20,8 +20,10 @@ namespace ProjectAboutProjects.DAL
             string culture = null;
             string uiCulture = null;
 
-            var twoLetterCultureName = httpContext.Request.Path.Value.Split('/')[IndexOfCulture]?.ToString();
-            var twoLetterUICultureName = httpContext.Request.Path.Value.Split('/')[IndexofUICulture]?.ToString();
+            //var twoLetterCultureName = httpContext.Request.Path.Value.Split('/')[IndexOfCulture]?.ToString();
+            //var twoLetterUICultureName = httpContext.Request.Path.Value.Split('/')[IndexofUICulture]?.ToString();
+            var twoLetterCultureName = httpContext.Request.Cookies["lang"];
+            var twoLetterUICultureName = httpContext.Request.Cookies["lang"];
 
             if (twoLetterCultureName == "tr")
                 culture = "tr-TR";

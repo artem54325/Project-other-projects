@@ -69,10 +69,10 @@ namespace ProjectAboutProjects
                 }};
             });
 
-            services.Configure<RouteOptions>(options =>
-            {
-                options.ConstraintMap.Add("culture", typeof(LanguageRouteConstraint));
-            });
+            //services.Configure<RouteOptions>(options =>
+            //{
+            //    options.ConstraintMap.Add("culture", typeof(LanguageRouteConstraint));
+            //});
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
