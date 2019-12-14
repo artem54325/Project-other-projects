@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -51,6 +52,7 @@ namespace ProjectAboutProjects
 
             services.AddMvc().AddViewLocalization();
             services.AddLocalization(options => options.ResourcesPath = "Resources");
+            
 
             services.Configure<RequestLocalizationOptions>(options =>
             {
@@ -68,6 +70,11 @@ namespace ProjectAboutProjects
                     IndexofUICulture=1
                 }};
             });
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                 .AddCookie(options => //CookieAuthenticationOptions
+                 {
+                     options.LoginPath = new Microsoft.AspNetCore.Http.PathString("/Account/Login");
+                 });
 
             //services.Configure<RouteOptions>(options =>
             //{
@@ -113,6 +120,9 @@ namespace ProjectAboutProjects
             app.UseStaticFiles();
             app.UseCookiePolicy();
             app.UseIdentity();
+
+            //app.UseAuthentication();    // аутентификация
+            //app.UseAuthorization();     // авторизация
 
             var supportedCultures = new[]
             {

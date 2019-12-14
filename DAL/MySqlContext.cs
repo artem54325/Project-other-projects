@@ -24,8 +24,9 @@ namespace ProjectAboutProjects.DAL
             base.OnModelCreating(builder);
         }
 
-        protected virtual DbSet<Post> Posts { get; set; }
-        protected virtual DbSet<Project> Projects { get; set; }
+        public DbSet<Post> Posts { get; set; }
+        public DbSet<Project> Projects { get; set; }
+        public DbSet<User> Users { get; set; }
 
     }
 }

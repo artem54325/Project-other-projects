@@ -30,43 +30,50 @@
                     <li><a href="/Projects">Projects</a></li>
                 </ul>
                 <label id="ava-header" for="ava-header">
-                    @if (User.Identity.IsAuthenticated)
-                        {
-                        <div id="sign-in">Sign in</div>
-                        <div id="dark-bg-login-form" class="video-bg" style="display: none;">
-                        <div id="login-form">
-                            <div class="close-login-form">Close</div>
-                            <p class="login-login-form" >Login</p>
-                            <p class="error-login-form">Error</p>
-                            <div class="inputs-login-form">
-                                <input type="text" placeholder="Username/E-mail" class="user-login-form input-login-form"/>
-                                <input type="password" placeholder="Password" class="password-login-form input-login-form"/>
-                                <div class="oauths-login-form">
-                                    <img class="oauth-login-form" src="~/images/auth/google-oauth.png"/>
-                                    <img class="oauth-login-form" src="~/images/auth/google-oauth.png"/>
-                                    <img class="oauth-login-form" src="~/images/auth/google-oauth.png"/>
-                                    <img class="oauth-login-form" src="~/images/auth/google-oauth.png"/>
-                                    <img class="oauth-login-form" src="~/images/auth/google-oauth.png"/>
+                    @if (!User.Identity.IsAuthenticated)
+                    {
+                       
+                            <div id="sign-in">Sign in</div>
+                            <div id="dark-bg-login-form" class="video-bg" style="display: none;">
+                                <div id="login-form">
+                                    <div class="close-login-form">Close</div>
+                                    <p class="login-login-form">Login</p>
+                                    <p class="error-login-form">Error</p>
+                                    <div class="inputs-login-form">
+                                        <form asp-action="Registration" asp-controller="Authorization" asp-anti-forgery="true">
+                                            <div class="validation" asp-validation-summary="ModelOnly" />
+                                            <input type="text" placeholder="Username/E-mail" class="user-login-form input-login-form" />
+                                            <input type="password" placeholder="Password" class="password-login-form input-login-form" />
+                                            <div class="oauths-login-form">
+                                                <img class="oauth-login-form" src="~/images/auth/google-oauth.png" />
+                                                <img class="oauth-login-form" src="~/images/auth/google-oauth.png" />
+                                                <img class="oauth-login-form" src="~/images/auth/google-oauth.png" />
+                                                <img class="oauth-login-form" src="~/images/auth/google-oauth.png" />
+                                                <img class="oauth-login-form" src="~/images/auth/google-oauth.png" />
+                                            </div>
+                                            <button class="button-login-form" id="registr">Registration</button>
+                                            <input type="submit" value="Login" class="button-login-form" />
+                                            @*<button class="button-login-form" id="login">Login</button>*@
+                                        </form>
+                                    </div>
                                 </div>
-                                <button class="button-login-form" id="registr">Registration</button>
-                                <button class="button-login-form" id="login">Login</button>
                             </div>
-                        </div>
-                        </div>
-                        }
-                        else
-                        {
-                        <!-- https://css-tricks.com/guides/ -->
-                        <ul class="user">
-                            <li><img class="img-user" src="~/images/auth/pretty-ava.jpg"/>
-                                <ul> 
-                                  <li><a href="">Settings</a></li> 
-                                  <li><a href="">Your likes</a></li> 
-                                  <li><a href="">Sign out</a></li> 
-                                </ul> 
-                            </li> 
-                        </ul>
-                        }
+                        
+                            }
+                            else
+                            {
+                            <!-- https://css-tricks.com/guides/ -->
+                            <ul class="user">
+                                <li>
+                                    <img class="img-user" src="~/images/auth/pretty-ava.jpg" />
+                                    <ul>
+                                        <li><a href="">Settings</a></li>
+                                        <li><a href="">Your likes</a></li>
+                                        <li><a href="">Sign out</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            }
                     </label>
                 <ul class="top-lang" >
                     <li><a href="">RU</a></li>
