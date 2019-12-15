@@ -3,9 +3,7 @@ namespace ProjectAboutProjects.Models
 {
     public class Project
     {
-        public int ProjectId { get; set; }
-        public Project()
-        {
-        }
+        public int Id { get; set; }
+
     }
 }

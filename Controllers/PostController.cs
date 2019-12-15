@@ -21,10 +21,34 @@ namespace ProjectAboutProjects.Controllers
         {
             return View();
         }
-        [HttpGet(Name ="write")]
+        [HttpGet]
         public async Task<ActionResult> Write()
         {
             return View();
+        }
+
+        [HttpGet]
+        public async Task<ActionResult> Posts()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public async Task<ActionResult> Post()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<JsonResult> WritePost()
+        {
+            return null;
+        }
+
+        [HttpPost]
+        public async Task<JsonResult> WriteComment()
+        {
+            return null;
         }
     }
 }
