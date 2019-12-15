@@ -50,7 +50,13 @@ namespace ProjectAboutProjects.Controllers
         {
             //if (ModelState.IsValid)
             //{
-                User user = await context.Users.FirstOrDefaultAsync(u => u.Email == model.Email && u.Password == model.Password);
+            //User user = await context.Users.FirstOrDefaultAsync(u => u.Email == model.Email && u.Password == model.Password);
+            User user = new User()
+            {
+                Email = "Email",
+                Password = "qwe",
+                LastName = "qwe"
+            };
                 if (user != null)
                 {
                     await Authenticate(model.Email); // аутентификация

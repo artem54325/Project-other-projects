@@ -9,8 +9,8 @@ using ProjectAboutProjects.DAL;
 namespace ProjectAboutProjects.Migrations
 {
     [DbContext(typeof(MySqlContext))]
-    [Migration("20191214202356_ProjctAbout")]
-    partial class ProjctAbout
+    [Migration("20191215075347_Name")]
+    partial class Name
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
