@@ -16,7 +16,13 @@ namespace ProjectAboutProjects.Controllers
          *
          *
          *///
+        [HttpGet]
         public async Task<ActionResult> Index()
+        {
+            return View();
+        }
+        [HttpGet(Name ="write")]
+        public async Task<ActionResult> Write()
         {
             return View();
         }
