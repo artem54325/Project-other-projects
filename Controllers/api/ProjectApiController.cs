@@ -19,11 +19,11 @@ namespace ProjectAboutProjects.Controllers.api
         }
 
         // GET: api/ProjectApi/5
-        [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
-        {
-            return "value";
-        }
+        //[HttpGet("{id}", Name = "Get")]
+        //public string Get(int id)
+        //{
+        //    return "value";
+        //}
 
         // POST: api/ProjectApi
         [HttpPost]
