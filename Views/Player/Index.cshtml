@@ -1,14 +1,44 @@
-@{
+﻿@{
     Layout = "_LayoutVideo";
     ViewData["Title"] = "Stream";
 }
 <script src="https://cdn.jsdelivr.net/npm/js-cookie@beta/dist/js.cookie.min.js"></script>
 <script src="~/js/video/stream.js" asp-append-version="true" defer="defer"></script>
 <script src="~/js/video/player_list.js" asp-append-version="true" type="module" defer="defer"></script>
-<div id="funct-video">
-    <img class="img-funct-video" id="camera" src="~/images/video/camera.png"/>
-    <img class="img-funct-video" id="player" src="~/images/video/player.png"/>
-    <img class="img-funct-video" id="sound" src="~/images/video/sound.png"/>
+<video controls
+       crossorigin
+       playsinline
+       poster="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.jpg"
+       id="player" style="height: 100%;width:100%;">
+    <!-- Video files -->
+    <source src="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-576p.mp4"
+            type="video/mp4"
+            size="576" />
+    <source src="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-720p.mp4"
+            type="video/mp4"
+            size="720" />
+    <source src="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-1080p.mp4"
+            type="video/mp4"
+            size="1080" />
+
+    <!-- Caption files -->
+    <track kind="captions"
+           label="English"
+           srclang="en"
+           src="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.en.vtt"
+           default />
+    <track kind="captions"
+           label="Français"
+           srclang="fr"
+           src="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.fr.vtt" />
+
+    <!-- Fallback for browsers that don't support the <video> element -->
+    <a href="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-576p.mp4" download>Download</a>
+</video>
+<div id="funct-video" style="display: none;">
+    <img class="img-funct-video" id="camera_but" src="~/images/video/camera.png"/>
+    <img class="img-funct-video" id="player_but" src="~/images/video/player.png"/>
+    <img class="img-funct-video" id="sound_but" src="~/images/video/sound.png"/>
       <div id="sound-volume-funct-video">
           <source src="http://lel.com/link/to/stream.m3u">
       </div>

@@ -14,10 +14,19 @@
 
 @*<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>*@
 
+<input type="text" value="Name post" id="postName"/>
+
 <div id="wmd-preview" class="wmd-panel"></div>
 <div id="wmd-editor" class="wmd-panel">
     <div id="wmd-button-bar"></div>
     <textarea id="wmd-input"></textarea>
 </div>
+<input type="submit" id="sendPost" value="Send post"/>
 
 <script type="text/javascript" src="~/js/post/wmd.js"></script>
+<script type="text/javascript">
+    $('#sendPost').click(function () {
+        console.log($('#wmd-input').html())
+        console.log($('#postName').html())
+    })
+</script>

@@ -128,6 +128,7 @@ namespace ProjectAboutProjects.Controllers
         {
             try
             {
+                Console.WriteLine("Jboqe = " + jObject.ToString());
                 Post post = new Post()
                 {
                     Views = 0,

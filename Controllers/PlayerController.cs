@@ -26,12 +26,12 @@ namespace ProjectAboutProjects.Controllers
 
         public async Task<ActionResult> Index()
         {
-            return View("ExampleStream");
+            return View();
         }
 
         public async Task<ActionResult> Stream()
         {
-            return View("Index");
+            return View("ExampleStream");
         }
     }
 }
