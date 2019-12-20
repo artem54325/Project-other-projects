@@ -50,6 +50,7 @@ nav li {
 .top-menu{
     margin-left: auto;
     float: left;
+    margin-left: -25px;
 }
 
 .top-lang{

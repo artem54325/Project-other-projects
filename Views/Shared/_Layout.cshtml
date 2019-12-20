@@ -38,11 +38,25 @@
         <div id="wrapper">
             <header id="header">
                 <ul class="top-menu">
-                    <li style="margin-left: -25px;"><a href="/">Home</a></li>
-                    <li><a href="/Posts">Posts</a></li>
-                    <li class="active"><a href="/VideoCall">Video call</a></li>
-                    <li><a href="/Player">Player</a></li>
-                    <li><a href="/Projects">Projects</a></li>
+                    <li id="layout_home"><a href="/">Home</a></li>
+                    <li id="layout_posts"><a href="/Posts">Posts</a></li>
+                    <li id="layout_video_call"><a href="/VideoCall">Video call</a></li>
+                    <li id="layout_player"><a href="/Player">Player</a></li>
+                    <li id="layout_projects"><a href="/Projects">Projects</a></li>
+                    <script type="text/javascript" defer="defer">
+                        var href = location.pathname;
+                        if (href.includes("/Projects")) {
+                            $('#layout_projects').addClass('active');
+                        } else if (href.includes("/Posts")) {
+                            $('#layout_posts').addClass('active');
+                        } else if (href.includes("/VideoCall")) {
+                            $('#layout_video_call').addClass('active');
+                        } else if (href.includes("/Player")) {
+                            $('#layout_player').addClass('active');
+                        } else {
+                            $('#layout_home').addClass('active');
+                        }
+                    </script>
                 </ul>
                 <label id="ava-header" for="ava-header">
                     @if (User.Identity.IsAuthenticated)
@@ -115,7 +129,7 @@
                             return cookie[name];
                         }
                         $(function () {
-                            if (getCookie('lang') == "en") {
+                            if (getCookie('lang') == null | getCookie('lang') == "en") {
                                 $('#lang_en').addClass('active');
                             } else {
                                 $('#lang_ru').addClass('active');
