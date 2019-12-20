@@ -40,10 +40,6 @@ namespace ProjectAboutProjects.Controllers
             return true;
         }
 
-        public async Task<ActionResult> Privacy()
-        {
-            return View();
-        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

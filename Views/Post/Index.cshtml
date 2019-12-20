@@ -1,45 +1,80 @@
 ﻿@{
-    Layout = "_LayoutVideo";
-    ViewData["Title"] = "Post";
+    ViewData["Title"] = "Home Page";
 }
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
 
 
-<script src="~/js/video/stream.js" asp-append-version="true" defer="defer"></script>
-<div id="funct-video">
-                    <img class="img-funct-video" id="camera" src="~/images/video/camera.png"/>
-                    <img class="img-funct-video" id="headphones" src="~/images/video/headphones.png"/>
-                    <img class="img-funct-video" id="sound" src="~/images/video/sound.png"/>
-                    <img class="img-funct-video" id="links_copy" src="~/images/video/links_copy.png"/>
-                    
-                    <div id="sound-volume-funct-video">
-                        <source src="http://lel.com/link/to/stream.m3u">
-                    </div>
+<link href="~/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="~/css/homeIndex.css">
+<link rel="stylesheet" href="~/css/post/index.css">
+
+<a href="post/write"><input type="submit" value="Create Post" class="post-create-submit" /></a>
+
+<div class="container content">
+    <div class="row" style="width:960px; margin-top:15px">
+        <div class="col-sm-4">
+            <div class="product">
+                <div class="product-img">
+                    <a href="#"><img src="img/goods1.jpg" alt=""></a>
                 </div>
-                <div class="chat">
-                            <div id="body"> 
-                              
-                            <div id="chat-circle" class="btn btn-raised">
-                                <div id="chat-overlay"></div>
-                                <i class="material-icons">Chat</i>
-                            </div>  
-                            <div class="chat-box">
-                                <div class="chat-box-header">
-                                  ChatBot
-                                  <span class="chat-box-toggle"><i class="material-icons">close</i></span>
-                                </div>
-                                <div class="chat-box-body">
-                                  <div class="chat-box-overlay">   
-                                  </div>
-                                  <div class="chat-logs">
-                                   
-                                  </div><!--chat-log -->
-                            </div>
-                            <div class="chat-input">      
-                              <form>
-                                <input type="text" id="chat-input" placeholder="Send a message..."/>
-                                  <button type="submit" class="chat-submit" id="chat-submit"><i class="material-icons">send</i></button>
-                              </form>      
-                            </div>
-                       </div>
-                    </div>
+                <p class="product-title">
+                    <a href="#">Cream jane jeans dress</a>
+                </p>
+                <p class="product-desc">Signature NYX cosmetics</p>
+                <p class="product-price">Price: €10.00</p>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="product">
+                <div class="product-img">
+                    <a href="#"><img src="img/goods1.jpg" alt=""></a>
                 </div>
+                <p class="product-title">
+                    <a href="#">Cream jane jeans dress</a>
+                </p>
+                <p class="product-desc">Signature NYX cosmetics</p>
+                <p class="product-price">Price: €10.00</p>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="product">
+                <div class="product-img">
+                    <a href="#"><img src="img/goods1.jpg" alt=""></a>
+                </div>
+                <p class="product-title">
+                    <a href="#">Cream jane jeans dress</a>
+                </p>
+                <p class="product-desc">Signature NYX cosmetics</p>
+                <p class="product-price">Price: €10.00</p>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="product">
+                <div class="product-img">
+                    <a href="#"><img src="img/goods1.jpg" alt=""></a>
+                </div>
+                <p class="product-title">
+                    <a href="#">Cream jane jeans dress</a>
+                </p>
+                <p class="product-desc">Signature NYX cosmetics</p>
+                <p class="product-price">Price: €10.00</p>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="product">
+                <div class="product-img">
+                    <a href="#"><img src="img/goods1.jpg" alt=""></a>
+                </div>
+                <p class="product-title">
+                    <a href="#">Cream jane jeans dress</a>
+                </p>
+                <p class="product-desc">Signature NYX cosmetics</p>
+                <p class="product-price">Price: €10.00</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>

@@ -1,0 +1,9 @@
+﻿.post-create-submit {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    background: gray;
+    border: 2px solid gray;
+    color: white;
+    padding: 5px;
+}

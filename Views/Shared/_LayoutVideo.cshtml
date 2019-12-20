@@ -32,7 +32,7 @@
             <header id="header">
                 <ul class="top-menu">
                     <li id="layout_home"><a href="/">Home</a></li>
-                    <li id="layout_posts"><a href="/Posts">Posts</a></li>
+                    <li id="layout_post"><a href="/Post">Posts</a></li>
                     <li id="layout_video_call"><a href="/VideoCall">Video call</a></li>
                     <li id="layout_player"><a href="/Player">Player</a></li>
                     <li id="layout_projects"><a href="/Projects">Projects</a></li>
@@ -40,8 +40,8 @@
                         var href = location.pathname;
                         if (href.includes("/Projects")) {
                             $('#layout_projects').addClass('active');
-                        } else if (href.includes("/Posts")) {
-                            $('#layout_posts').addClass('active');
+                        } else if (href.includes("/Post")) {
+                            $('#layout_post').addClass('active');
                         } else if (href.includes("/VideoCall")) {
                             $('#layout_video_call').addClass('active');
                         } else if (href.includes("/Player")) {
