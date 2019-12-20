@@ -1,36 +1,51 @@
 ﻿<!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>@ViewData["Title"]</title>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
 
-        <environment include="Development">
-            <link rel="stylesheet" href="~/css/_layout.css" type="text/css"/>
-            <link rel="stylesheet" href="~/css/snackbar.css" type="text/css"/>
-            <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-        </environment>
-        <environment exclude="Development">
-            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
-                  asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
-                  asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
-            <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
-        </environment>
-        @RenderSection("StyleSheets", required: false)
-    </head>
+    <environment include="Development">
+        <link rel="stylesheet" href="~/css/_layout.css" type="text/css" />
+        <link rel="stylesheet" href="~/css/snackbar.css" type="text/css" />
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+    </environment>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <environment exclude="Development">
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"
+                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                asp-fallback-test="window.jQuery"
+                crossorigin="anonymous"
+                integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT">
+        </script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+                crossorigin="anonymous"
+                integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd">
+        </script>
+        <script src="~/js/site.min.js" asp-append-version="true"></script>
+    </environment>
+    @RenderSection("StyleSheets", required: false)
+</head>
     <body>
         <div id="wrapper">
             <header id="header">
                 <ul class="top-menu">
                     <li style="margin-left: -25px;"><a href="/">Home</a></li>
                     <li><a href="/Posts">Posts</a></li>
-                    <li><a href="/Player/Stream">Stream</a></li>
                     <li class="active"><a href="/VideoCall">Video call</a></li>
                     <li><a href="/Player">Player</a></li>
                     <li><a href="/Projects">Projects</a></li>
                 </ul>
                 <label id="ava-header" for="ava-header">
-                    @if (!User.Identity.IsAuthenticated)
+                    @if (User.Identity.IsAuthenticated)
                     {
                        
                             <div id="sign-in">Sign in</div>
@@ -75,9 +90,38 @@
                             </ul>
                             }
                     </label>
-                <ul class="top-lang" >
-                    <li><a href="">RU</a></li>
-                    <li class="active"><a href="">EN</a></li>
+                <ul class="top-lang">
+                    <li onclick="changeLang('tr')" id="lang_ru"><a>RU</a></li>
+                    <li onclick="changeLang('en')" id="lang_en"><a>EN</a></li>
+                    <script type="text/javascript">
+                        function changeLang(lang) {
+                            $.ajax({
+                                type: "POST",
+                                url: '/Home/ChangeLang',
+                                data: {
+                                    lang: lang
+                                },
+                                success: function (html) {
+                                    document.location.href = window.location.href;
+                                }
+                            });
+                        }
+                        function getCookie(name) {
+                            let cookie = {};
+                            document.cookie.split(';').forEach(function (el) {
+                                let [k, v] = el.split('=');
+                                cookie[k.trim()] = v;
+                            })
+                            return cookie[name];
+                        }
+                        $(function () {
+                            if (getCookie('lang') == "en") {
+                                $('#lang_en').addClass('active');
+                            } else {
+                                $('#lang_ru').addClass('active');
+                            }
+                        })
+                    </script>
                 </ul>
             </header>
          <div id="container">
@@ -104,23 +148,6 @@
             <script src="~/js/site.js" asp-append-version="true"></script>
             <script src="~/js/auth/auth.js" asp-append-version="true"></script>
         </environment>
-        <environment exclude="Development">
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-            <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"
-                    asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
-                    asp-fallback-test="window.jQuery"
-                    crossorigin="anonymous"
-                    integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT">
-            </script>
-            <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
-                    asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
-                    asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
-                    crossorigin="anonymous"
-                    integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd">
-            </script>
-            <script src="~/js/site.min.js" asp-append-version="true"></script>
-        </environment>
-
         @RenderSection("Scripts", required: false)
     </body>
 </html>

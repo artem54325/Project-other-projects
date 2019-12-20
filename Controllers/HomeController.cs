@@ -24,21 +24,20 @@ namespace ProjectAboutProjects.Controllers
             return View();
         }
 
-        public async Task<ActionResult> About()
+        public async Task<bool> ChangeLang(string lang)
         {
-            ViewData["Message"] = "Your application description page.";
-            //HttpContext.Response.Cookies["lang"].Value = "en";
-            HttpContext.Response.Cookies.Append("lang", "en");
 
-            return View();
-        }
-
-        public async Task<ActionResult> Contact()
-        {
-            ViewData["Message"] = "Your contact page.";
-            HttpContext.Response.Cookies.Append("lang", "tr");
-
-            return View();
+            HttpContext.Response.Cookies.Append("lang", lang);
+            //string lang = HttpContext.Request.Cookies["lang"];
+            //if (lang==null || lang.Equals("en"))
+            //{
+            //    HttpContext.Response.Cookies.Append("lang", "tr");
+            //}
+            //else
+            //{
+            //    HttpContext.Response.Cookies.Append("lang", "en");
+            //}
+            return true;
         }
 
         public async Task<ActionResult> Privacy()

@@ -1,0 +1,16 @@
+#search-input{
+    float: right;
+    margin-right: 20px;
+    margin-top: 10px;
+    width: 200px;
+}
+
+#create-post{
+    background: #797878;
+    margin-left: 20px;
+    margin-top: 8px;
+    color: fff;
+    font-size: 18px;
+    border-radius: 10px;
+    border: #fff;
+}

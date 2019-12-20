@@ -1,0 +1,45 @@
+﻿@{
+    Layout = "_LayoutVideo";
+    ViewData["Title"] = "Post";
+}
+
+
+<script src="~/js/video/stream.js" asp-append-version="true" defer="defer"></script>
+<div id="funct-video">
+                    <img class="img-funct-video" id="camera" src="~/images/video/camera.png"/>
+                    <img class="img-funct-video" id="headphones" src="~/images/video/headphones.png"/>
+                    <img class="img-funct-video" id="sound" src="~/images/video/sound.png"/>
+                    <img class="img-funct-video" id="links_copy" src="~/images/video/links_copy.png"/>
+                    
+                    <div id="sound-volume-funct-video">
+                        <source src="http://lel.com/link/to/stream.m3u">
+                    </div>
+                </div>
+                <div class="chat">
+                            <div id="body"> 
+                              
+                            <div id="chat-circle" class="btn btn-raised">
+                                <div id="chat-overlay"></div>
+                                <i class="material-icons">Chat</i>
+                            </div>  
+                            <div class="chat-box">
+                                <div class="chat-box-header">
+                                  ChatBot
+                                  <span class="chat-box-toggle"><i class="material-icons">close</i></span>
+                                </div>
+                                <div class="chat-box-body">
+                                  <div class="chat-box-overlay">   
+                                  </div>
+                                  <div class="chat-logs">
+                                   
+                                  </div><!--chat-log -->
+                            </div>
+                            <div class="chat-input">      
+                              <form>
+                                <input type="text" id="chat-input" placeholder="Send a message..."/>
+                                  <button type="submit" class="chat-submit" id="chat-submit"><i class="material-icons">send</i></button>
+                              </form>      
+                            </div>
+                       </div>
+                    </div>
+                </div>
