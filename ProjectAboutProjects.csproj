@@ -38,6 +38,7 @@
   <ItemGroup>
     <Compile Remove="Controllers\HomeApiController.cs" />
     <Compile Remove="Views\Settings\Index.cs" />
+    <Compile Remove="Controllers\ProjectController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="wwwroot\css\authorization.css" />

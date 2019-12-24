@@ -42,9 +42,8 @@
                     <li id="layout_post"><a href="/Post">Posts</a></li>
                     <li id="layout_video_call"><a href="/VideoCall">Video call</a></li>
                     <li id="layout_player"><a href="/Player">Player</a></li>
-                    <li id="layout_projects"><a href="/Projects">Projects</a></li>
                     <script type="text/javascript" defer="defer">
-                        var href = location.pathname;
+                        var href = location.pathname.toLowerCase();
                         if (href.includes("/Projects")) {
                             $('#layout_project').addClass('active');
                         } else if (href.includes("/Post")) {

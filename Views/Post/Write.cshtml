@@ -12,23 +12,44 @@
 <link rel="stylesheet" type="text/css" href="~/css/wmd.css" />
 <script type="text/javascript" src="~/js/post/showdown.js"></script>
 
-<div class="comment-write>
-
+<div class="comment-write">   
+    <span class="comment-write-name">Name post:</span>
+    <input type="text"id="post_name"/>
 </div>
-<span class="comment-write-name">Name post:</span>
-<input type="text"id="post_name"/>
+
 
 <div id="wmd-preview" class="wmd-panel"></div>
 <div id="wmd-editor" class="wmd-panel">
     <div id="wmd-button-bar"></div>
     <textarea id="wmd-input"></textarea>
 </div>
+<select name="lang">
+    <option value ="rus">rus</option>
+    <option value ="eng">eng</option>
+</select> 
 <input type="submit" id="sendPost" value="Send post"/>
 
 <script type="text/javascript" src="~/js/post/wmd.js"></script>
 <script type="text/javascript">
     $('#sendPost').click(function () {
-        console.log($('#wmd-input').html())
-        console.log($('#post_name').html())
+        console.log($('#wmd-input').val())
+        console.log($('#post_name').val())
+        var str = '1234567890987654321';
+        alert(str.substr(str.length - 8))
+
+        $.ajax({
+    url: '/post/WritePost',
+    dataType: 'json',
+    type: 'post',
+    contentType: 'application/json',
+    data: JSON.stringify( { "html": $('#first-name').val(), "lang": $('#last-name').val() } ),
+    processData: false,
+    success: function( data, textStatus, jQxhr ){
+        $('#response pre').html( JSON.stringify( data ) );
+    },
+    error: function( jqXhr, textStatus, errorThrown ){
+        console.log( errorThrown );
+    }
+});
     })
 </script>

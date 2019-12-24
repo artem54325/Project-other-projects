@@ -35,16 +35,13 @@
                     <li id="layout_post"><a href="/Post">Posts</a></li>
                     <li id="layout_video_call"><a href="/VideoCall">Video call</a></li>
                     <li id="layout_player"><a href="/Player">Player</a></li>
-                    <li id="layout_projects"><a href="/Projects">Projects</a></li>
                     <script type="text/javascript" defer="defer">
-                        var href = location.pathname;
-                        if (href.includes("/Projects")) {
-                            $('#layout_projects').addClass('active');
-                        } else if (href.includes("/Post")) {
+                        var href = location.pathname.toLowerCase();
+                        if (href.includes("/post")) {
                             $('#layout_post').addClass('active');
-                        } else if (href.includes("/VideoCall")) {
+                        } else if (href.includes("/videocall")) {
                             $('#layout_video_call').addClass('active');
-                        } else if (href.includes("/Player")) {
+                        } else if (href.includes("/player")) {
                             $('#layout_player').addClass('active');
                         } else {
                             $('#layout_home').addClass('active');
