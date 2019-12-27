@@ -23,7 +23,7 @@
     <div id="wmd-button-bar"></div>
     <textarea id="wmd-input"></textarea>
 </div>
-<select name="lang">
+<select id="language" name="lang">
     <option value ="rus">rus</option>
     <option value ="eng">eng</option>
 </select> 
@@ -34,18 +34,28 @@
     $('#sendPost').click(function () {
         console.log($('#wmd-input').val())
         console.log($('#post_name').val())
-        var str = '1234567890987654321';
-        alert(str.substr(str.length - 8))
+        var html = $('#wmd-input').val();
+        var short_html = '';
+        if (html.length > 120) {
+            short_html = html.substr(120);
+        } else {
+            short_html = html;
+        }
 
         $.ajax({
     url: '/post/WritePost',
     dataType: 'json',
     type: 'post',
     contentType: 'application/json',
-    data: JSON.stringify( { "html": $('#first-name').val(), "lang": $('#last-name').val() } ),
+            data: JSON.stringify({
+                "html": html,
+                "lang": $('#language option:selected').val(),
+                "short_description": short_html,
+                "post_name": $('#post_name').val()
+            }),//$( "#myselect option:selected" ).text();
     processData: false,
-    success: function( data, textStatus, jQxhr ){
-        $('#response pre').html( JSON.stringify( data ) );
+            success: function (data, textStatus, jQxhr) {
+                alert(JSON.stringify(data));
     },
     error: function( jqXhr, textStatus, errorThrown ){
         console.log( errorThrown );

@@ -33,6 +33,7 @@ namespace ProjectAboutProjects.Controllers
         {
             return View();
         }
+       
         [HttpGet]
         public async Task<ActionResult> Write()
         {
@@ -40,24 +41,37 @@ namespace ProjectAboutProjects.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult> Posts()
-        {
-            var posts = context.Posts.ToList();
-            return View(posts);
-        }
-
-        [HttpGet(Name ="post/{id}")]
         public async Task<ActionResult> Post(string id)
         {
-            var post = context.Posts.Where(a => a.Id.Equals(id)).SingleOrDefault();
-            if(post == null)
-            {
-                return Redirect("/Post");
-            }
-            post.Views += 1;
-            context.Posts.Update(post);
-            ViewBag.post = JsonConvert.SerializeObject(post);
+            ViewBag.post = PostId(id);
+
             return View();
+        }
+
+        [HttpGet]
+        public async Task<JsonResult> Posts()
+        {
+            var posts = context.Posts.ToList();
+            return Json(posts);//View(posts);
+        }
+
+        [HttpGet]
+        public async Task<JsonResult>PostId(string id)
+        {
+            //var post = context.Posts.Where(a => a.Id.Equals(id)).SingleOrDefault();
+            //if (post == null)
+            //{
+            //    return null;
+            //}
+            //post.Views += 1;
+            //context.Posts.Update(post);
+            //return Json(post);
+            return Json("{"+
+  "\"html\": \"qweqeqejnfsdjfnsf\nsdfsfd`sdfsf\nsdf`sdfsfs\n\n\n    qweq\n\nqweq\n\n![qweqweqeqe][1]\n\n**qwe**\n\n*qfdsfs*\n\n  [1]:  https://media.geeksforgeeks.org/wp-content/uploads/20190719161521/core.jpg\","+
+  "\"lang\": \"rus\"," +
+  "\"short_description\": \"eeksforgeeks.org/wp-content/uploads/20190719161521/core.jpg\"," +
+  "\"post_name\": \"NAME\"" +
+"}");
         }
 
         [HttpPost]
@@ -65,7 +79,7 @@ namespace ProjectAboutProjects.Controllers
         {
             try
             {
-                string postId = jObject["postId"] == null ? null : jObject["postId"].ToString();
+                string postId = jObject["post_id"] == null ? null : jObject["post_id"].ToString();
                 var post = context.Posts.Where(a => a.Id.Equals(postId)).SingleOrDefault();
 
                 bool activiti = false;
@@ -97,7 +111,7 @@ namespace ProjectAboutProjects.Controllers
         {
             try
             {
-                string comId = jObject["commentId"] == null ? null : jObject["commentId"].ToString();
+                string comId = jObject["comment_id"] == null ? null : jObject["comment_id"].ToString();
                 var com = context.Comments.Where(a => a.Id.Equals(comId)).SingleOrDefault();
 
                 bool activiti = false;
@@ -133,8 +147,9 @@ namespace ProjectAboutProjects.Controllers
                 {
                     Views = 0,
                     UserId = User.Identity.Name,
+                    NamePost = jObject["name_post"] == null ? null : jObject["name_post"].ToString(),
                     Html = jObject["html"] == null ? null : jObject["html"].ToString(),
-                    ShortDescription = jObject["shortDescription"] == null ? null : jObject["shortDescription"].ToString(),
+                    ShortDescription = jObject["short_description"] == null ? null : jObject["short_description"].ToString(),
                     Lang = jObject["lang"] == null ? null : jObject["lang"].ToString(),
                     Comments = new System.Collections.Generic.List<Comment>(),
                     DateTimePublish = new DateTime()
@@ -156,7 +171,7 @@ namespace ProjectAboutProjects.Controllers
         {
             try
             {
-                string postId = jObject["postId"] == null ? null : jObject["postId"].ToString();
+                string postId = jObject["post_id"] == null ? null : jObject["post_id"].ToString();
                 Comment comment = new Comment()
                 {
                     UserId = User.Identity.Name,

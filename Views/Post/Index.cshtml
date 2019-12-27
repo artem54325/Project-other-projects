@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Post";
 }
 @using Microsoft.AspNetCore.Mvc.Localization
 @inject IViewLocalizer Localizer
@@ -13,8 +13,8 @@
 
 <div class="container content">
     <div class="row" style="width:960px; margin-top:15px">
-        <div class="col-sm-4">
-            <div class="product">
+        <div class="col-sm-4">   
+            <div class="product" onclick="redirect('/post/post?id=qwe')">
                 <div class="product-img">
                     <a href="#"><img src="img/goods1.jpg" alt=""></a>
                 </div>
@@ -24,57 +24,18 @@
                 <p class="product-desc">Signature NYX cosmetics</p>
                 <p class="product-price">Price: €10.00</p>
             </div>
+            
         </div>
-        <div class="col-sm-4">
-            <div class="product">
-                <div class="product-img">
-                    <a href="#"><img src="img/goods1.jpg" alt=""></a>
-                </div>
-                <p class="product-title">
-                    <a href="#">Cream jane jeans dress</a>
-                </p>
-                <p class="product-desc">Signature NYX cosmetics</p>
-                <p class="product-price">Price: €10.00</p>
-            </div>
-        </div>
-        <div class="col-sm-4">
-            <div class="product">
-                <div class="product-img">
-                    <a href="#"><img src="img/goods1.jpg" alt=""></a>
-                </div>
-                <p class="product-title">
-                    <a href="#">Cream jane jeans dress</a>
-                </p>
-                <p class="product-desc">Signature NYX cosmetics</p>
-                <p class="product-price">Price: €10.00</p>
-            </div>
-        </div>
-        <div class="col-sm-4">
-            <div class="product">
-                <div class="product-img">
-                    <a href="#"><img src="img/goods1.jpg" alt=""></a>
-                </div>
-                <p class="product-title">
-                    <a href="#">Cream jane jeans dress</a>
-                </p>
-                <p class="product-desc">Signature NYX cosmetics</p>
-                <p class="product-price">Price: €10.00</p>
-            </div>
-        </div>
-        <div class="col-sm-4">
-            <div class="product">
-                <div class="product-img">
-                    <a href="#"><img src="img/goods1.jpg" alt=""></a>
-                </div>
-                <p class="product-title">
-                    <a href="#">Cream jane jeans dress</a>
-                </p>
-                <p class="product-desc">Signature NYX cosmetics</p>
-                <p class="product-price">Price: €10.00</p>
-            </div>
-        </div>
+        <script>
+            function redirect(page) {
+                var protocol = location.protocol;
+var slashes = protocol.concat("//");
+var host = slashes.concat(window.location.host);
+window.location.replace(host+page);
+            }
+        </script>
+
     </div>
 </div>
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="bootstrap/js/bootstrap.min.js"></script>

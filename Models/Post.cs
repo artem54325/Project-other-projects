@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ProjectAboutProjects.Models
 {
@@ -11,11 +12,13 @@ namespace ProjectAboutProjects.Models
         public string UserId { get; set; }
         public User User { get; set; }
 
+        public string NamePost { get; set; }
+
         public List<Comment> Comments { get; set; }
         public string ShortDescription { get; set; }
 
         public int Views { get; set; }
-
+        [NotMapped]
         public List<string> UsersLike { get; set; }
         public string JsonUsersLike
         {
@@ -35,6 +38,7 @@ namespace ProjectAboutProjects.Models
 
         public string Html { get; set; }
         public string Lang { get; set; }
+        
         public DateTime DateTimePublish { get; set; }
         public DateTime DateTimeLasteChange { get; set; }
     }
@@ -45,7 +49,7 @@ namespace ProjectAboutProjects.Models
 
         public string UserId { get; set; }
         public User User { get; set; }
-
+        [NotMapped]
         public List<string> UsersLike { get; set; }
         public string JsonUsersLike
         {
