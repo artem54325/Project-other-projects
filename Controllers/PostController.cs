@@ -56,7 +56,7 @@ namespace ProjectAboutProjects.Controllers
         }
 
         [HttpGet]
-        public async Task<JsonResult>PostId(string id)
+        public async Task<JsonResult>Search(string id)
         {
             //var post = context.Posts.Where(a => a.Id.Equals(id)).SingleOrDefault();
             //if (post == null)
