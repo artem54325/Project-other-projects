@@ -43,8 +43,7 @@ namespace ProjectAboutProjects.Controllers
         [HttpGet]
         public async Task<ActionResult> Post(string id)
         {
-            ViewBag.post = PostId(id);
-
+            //CHECK ID
             return View();
         }
 
@@ -66,7 +65,9 @@ namespace ProjectAboutProjects.Controllers
             //post.Views += 1;
             //context.Posts.Update(post);
             //return Json(post);
-            return Json("{"+
+
+            //Добавить кол-во просмотров и кол-во лайков
+            return new JsonResult("{"+
   "\"html\": \"qweqeqejnfsdjfnsf\nsdfsfd`sdfsf\nsdf`sdfsfs\n\n\n    qweq\n\nqweq\n\n![qweqweqeqe][1]\n\n**qwe**\n\n*qfdsfs*\n\n  [1]:  https://media.geeksforgeeks.org/wp-content/uploads/20190719161521/core.jpg\","+
   "\"lang\": \"rus\"," +
   "\"short_description\": \"eeksforgeeks.org/wp-content/uploads/20190719161521/core.jpg\"," +

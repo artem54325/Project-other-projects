@@ -11,18 +11,48 @@
 
 <div class="container">
     <div class="content">
-                    <span class="html"></span>
-            <span class="likes-post"></span>
-            <span class="views"></span>
+            <div id="post-name"></div>
+            <div id="html">hmtl</div>
+            <span id="post-likes">25</span>
+            <span id="views">100</span>
+            <span id="lang">lang</span>
     </div>
     <div class="comments">
         <div class="coomment">
-            <span class="text"></span>
-            <span class="likes-comment"></span>
-            <span class="user"></span>
+            <div class="text">COMMENTLIKE</div>
+            <span class="likes-comment">10</span>
+            <span class="user">35</span>
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    post()
+    function post() {
+    var queryDict = {}
+    location.search.substr(1).split("&").forEach(function(item) {queryDict[item.split("=")[0]] = item.split("=")[1]})
+    $.ajax({
+        type: "GET",
+        url: '/Post/Search?id='+queryDict['id'],
+        success: function (data) {
+            alert(data);
+            //data = JSON.parse(data);
+            alert('html = ' + data['hmtl']);
+            $('#post-name').html(data['post_name']);
+            $('#html').html(data['html']);
+            $('#post-likes').html(0);
+            $('#views').html(0);
+            $('#lang').html(data['lang']);
+        }
+    });
+    }
+    function requestComment() {
+
+    }
+    function requestLike() {
+
+    }
+</script>
 
 
 
