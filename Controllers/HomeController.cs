@@ -26,17 +26,7 @@ namespace ProjectAboutProjects.Controllers
 
         public async Task<bool> ChangeLang(string lang)
         {
-
             HttpContext.Response.Cookies.Append("lang", lang);
-            //string lang = HttpContext.Request.Cookies["lang"];
-            //if (lang==null || lang.Equals("en"))
-            //{
-            //    HttpContext.Response.Cookies.Append("lang", "tr");
-            //}
-            //else
-            //{
-            //    HttpContext.Response.Cookies.Append("lang", "en");
-            //}
             return true;
         }
 

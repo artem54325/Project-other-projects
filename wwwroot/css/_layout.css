@@ -1,4 +1,4 @@
-body{
+body {
     /* background: salmon; */
 }
 
@@ -6,8 +6,10 @@ body{
     max-width: 960px;
     margin: auto;
     box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    position: relative;
 }
-#container{
+
+#container {
     height: 100vh;
     background: #C4C4C4;
 }
@@ -33,11 +35,11 @@ nav li {
     margin: 0;
 }
 
-.top-menu li.active, .top-lang li.active {
-    background: #29c5e6;
-    color: #000;
-    text-shadow: #fff 0 0 6px;
-}
+    .top-menu li.active, .top-lang li.active {
+        background: #29c5e6;
+        color: #000;
+        text-shadow: #fff 0 0 6px;
+    }
 
 .top-menu a, .top-lang a, #sign-in {
     color: #fff;
@@ -47,42 +49,47 @@ nav li {
     text-decoration: none;
 }
 
-.top-menu{
+.top-menu {
     margin-left: auto;
     float: left;
-    margin-left: -25px;
 }
 
-.top-lang{
+.top-lang {
     margin-left: auto;
     float: right;
+    position: relative;
+    right: 57px;
 }
 
-#ava-header{
-    float: right;
+#ava-header {
+    width: 42px;
+    height: 42px;
+    right: 5px;
+    position: absolute;
+    cursor: pointer;
 }
 
-#header{
+#header {
     overflow: hidden;
     background: #C4C4C4;
     margin-bottom: 4px;
+    height: 42px;
 }
 
 .img-user {
-    padding-top: 5px;
-    width: 60px;
-    height: 60px;
+    width: 42px;
+    height: 42px;
     border-radius: 50%;
 }
 
-#sign-in{
+#sign-in {
     font: 14px 'Oswald', sans-serif;
     display: inline-block;
     padding: 15px;
     margin: 0;
 }
 
-#login-form{
+#login-form {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -92,17 +99,17 @@ nav li {
     background: #C4C4C4;
     position: absolute;
     z-index: 99999;
-    opacity: 1;	
+    opacity: 1;
     border-radius: 20px;
 }
 
-.input-login-form{
+.input-login-form {
     position: relative;
     width: 90%;
     left: 5%;
-    font-weight:bold;
+    font-weight: bold;
     font-size: 18px;
-    color:#000000;
+    color: #000000;
     margin-top: 10px;
     text-align: center;
     display: inline-block;
@@ -112,13 +119,13 @@ nav li {
     font-size: 14sp;
 }
 
-.login-login-form{
+.login-login-form {
     font-size: 24px;
     text-align: center;
     margin-bottom: 5px;
 }
 
-.button-login-form{
+.button-login-form {
     background: #797878;
     width: 40%;
     margin-left: 6%;
@@ -130,18 +137,18 @@ nav li {
 }
 
 .video-bg:before {
-	content: '';
-	background: #000;
-	position: fixed; 
-	left: 0;
-	top: 0;
-	width: 100%; 
-	height: 100%;
-	opacity: 0.7;
-	z-index: 9999;
+    content: '';
+    background: #000;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.7;
+    z-index: 9999;
 }
 
-.error-login-form{
+.error-login-form {
     display: none;
     font-size: 24px;
     margin-top: -5px;
@@ -150,78 +157,94 @@ nav li {
     margin-bottom: 5px;
 }
 
-.close-login-form{
+.close-login-form {
     position: absolute;
     float: right;
     top: 10px;
     right: 10px;
-    font: 14px Arial, sans-serif; 
+    font: 14px Arial, sans-serif;
 }
 
-.oauths-login-form{
+.oauths-login-form {
     margin-top: 10px;
     text-align: center;
 }
 
-.oauth-login-form{
+.oauth-login-form {
     width: 60px;
 }
 
 
 .user, .user ul {
-    /* Обнуляем отступы и убираем маркеры у списков */
-    display:block;
-    list-style: none; 
-    margin: 0; 
-    right:0; 
-    left: auto; 
+    display: block;
+    list-style: none;
+    margin: 0;
+    right: 0;
+    left: auto;
     padding: 0;
-    position: fixed;
+    /*position: fixed;*/
 }
+
 .user {
-    padding: 0 5px; /* Поля */
-    font: 14px Arial, sans-serif; /* Параметры шрифта */
+    padding: 0 5px;
+    font: 14px Arial, sans-serif;
+    left: 302px;
+    height: 42px;
 }
-.user > li {
-    display: inline-block; /* Выстраиваем по горизонтали */
-    border-right: 1px solid #fff; /* Белая линия справа */
-    position: relative; /* Относительное позиционирование */
-}
-.user a {
-    text-decoration: none; /* Убираем подчёркивание */
-    color: #4c4c4c; /* Цвет ссылок */
-    display: block; /* Блочные ссылки */
-}
-.user > li > a {
-    padding: 10px 15px; /* Поля */
-    border-right: 1px solid #d8d8d8; /* Серая линия справа */
-    position: relative; 
-    z-index: 3; /* Выводим поверх остальных элементов */
-}
-.user ul {
-    position: absolute; /* Абсолютное позиционирование */
-    display: none; /* Прячем подменю */
-    width: 100px; /* Ширина подменю */
-    background: #fff; /* Цвет фона */
-    box-shadow: 0 0 10px #666; /* Параметры тени */
-    text-align:right;
-}
-.user ul a {
-    padding: 5px 10px; /* Поля */
-}
-.user ul a:hover {
-    background: #008df2; /* Цвет фона */
-    color: #fff; /* Цвет текста */
-}
-.user li:hover ul {
-    display: block; /* Показываем подменю */
-}
-.user > li:hover::before {
-    content: ''; /* Создаём пустой псевдоэлемент */
-    top: 0; left: 0; right: 0; bottom: 0; /* Размер совпадает с пунктом меню */
-    box-shadow: 0 5px 10px #666; /* Параметры тени */
-    position: absolute; /* Абсолютное позиционирование */
-}
-.user > li:hover > a {
-    background: #fff; /* Цвет фона */
-}
+
+    .user > li {
+        display: inline-block;
+        width: 42px;
+        height: 42px;
+        position: absolute;
+        z-index: 9;
+    }
+
+    .user a {
+        text-decoration: none;
+        color: #4c4c4c;
+        display: block;
+    }
+
+    .user > li > a {
+        padding: 10px 15px;
+        border-right: 1px solid #d8d8d8;
+        position: relative;
+        z-index: 3;
+    }
+
+    .user ul {
+        position: absolute; /* �弍�仂仍�ﾑ�仆仂亠 仗仂亰亳�亳仂仆亳�仂于舒仆亳亠 */
+        display: none; /* �����亠仄 仗仂亟仄亠仆�� */
+        width: 100px; /* 丿亳�亳仆舒 仗仂亟仄亠仆�� */
+        background: #fff; /* 丶于亠� �仂仆舒 */
+        box-shadow: 0 0 10px #666; /* �舒�舒仄亠��� �亠仆亳 */
+        text-align: right;
+    }
+
+        .user ul a {
+            padding: 5px 10px; /* �仂仍�� */
+        }
+
+            .user ul a:hover {
+                background: #008df2; /* 丶于亠� �仂仆舒 */
+                color: #fff; /* 丶于亠� �亠从��舒 */
+            }
+
+    .user li:hover ul {
+        display: block; /* �仂从舒亰�于舒亠仄 仗仂亟仄亠仆�� */
+    }
+
+    .user > li:hover::before {
+        content: ''; /* 弌仂亰亟舒�仄 仗���仂亶 仗�亠于亟仂�仍亠仄亠仆� */
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0; /* �舒亰仄亠� �仂于仗舒亟舒亠� � 仗�仆从�仂仄 仄亠仆�� */
+        box-shadow: 0 5px 10px #666; /* �舒�舒仄亠��� �亠仆亳 */
+        position: absolute; /* �弍�仂仍�ﾑ�仆仂亠 仗仂亰亳�亳仂仆亳�仂于舒仆亳亠 */
+    }
+
+    .user > li:hover > a {
+        background: #fff; /* 丶于亠�
+            }
