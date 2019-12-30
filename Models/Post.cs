@@ -12,7 +12,7 @@ namespace ProjectAboutProjects.Models
         public string UserId { get; set; }
         public User User { get; set; }
 
-        public string NamePost { get; set; }
+        public string PostName { get; set; }
 
         public List<Comment> Comments { get; set; }
         public string ShortDescription { get; set; }

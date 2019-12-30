@@ -35,13 +35,14 @@
         type: "GET",
         url: '/Post/Search?id='+queryDict['id'],
         success: function (data) {
-            alert(data);
-            //data = JSON.parse(data);
-            alert('html = ' + data['hmtl']);
-            $('#post-name').html(data['post_name']);
+            console.log(data['html']);
+            console.log(JSON.stringify(data));
+            console.log(data.html);
+
+            $('#post-name').html(data['postName']);
             $('#html').html(data['html']);
-            $('#post-likes').html(0);
-            $('#views').html(0);
+            $('#post-likes').html(data['views']);
+            $('#views').html(data['views']);
             $('#lang').html(data['lang']);
         }
     });
