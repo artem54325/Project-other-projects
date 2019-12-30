@@ -75,6 +75,8 @@ namespace ProjectAboutProjects
                  {
                      options.LoginPath = new Microsoft.AspNetCore.Http.PathString("/Account/Login");
                  });
+            services.AddMvc()
+                .AddXmlFormaterExtensions();
 
             //services.Configure<RouteOptions>(options =>
             //{
@@ -120,6 +122,7 @@ namespace ProjectAboutProjects
             app.UseStaticFiles();
             app.UseCookiePolicy();
             app.UseIdentity();
+
 
             //app.UseAuthentication();    // аутентификация
             //app.UseAuthorization();     // авторизация
