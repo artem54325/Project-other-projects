@@ -47,7 +47,6 @@ namespace ProjectAboutProjects.Controllers
             //CHECK ID
             return View();
         }
-<<<<<<< HEAD
 
         [HttpGet]
         public async Task<JsonResult> Posts()
@@ -216,7 +215,5 @@ namespace ProjectAboutProjects.Controllers
 
             return Json("{'status':true}");
         }
-=======
->>>>>>> 6d835713f4f8ab42ea4a400e2d98f52230ece842
     }
 }

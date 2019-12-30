@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json.Linq;
+using ProjectAboutProjects.DAL;
 using ProjectAboutProjects.Models;
 
 namespace ProjectAboutProjects.Controllers.api
@@ -16,7 +17,7 @@ namespace ProjectAboutProjects.Controllers.api
 
         private readonly MySqlContext context;
 
-        public PostController(MySqlContext _context)
+        public PostApiController(MySqlContext _context)
         {//IHttpActionResult
             //https://docs.microsoft.com/ru-ru/aspnet/web-api/overview/getting-started-with-aspnet-web-api/tutorial-your-first-web-api
             context = _context;
@@ -44,12 +45,32 @@ namespace ProjectAboutProjects.Controllers.api
             //return Json(post);
 
             //Добавить кол-во просмотров и кол-во лайков
-            return new JsonResult("{" +
-  "\"html\": \"qweqeqejnfsdjfnsf\nsdfsfd`sdfsf\nsdf`sdfsfs\n\n\n    qweq\n\nqweq\n\n![qweqweqeqe][1]\n\n**qwe**\n\n*qfdsfs*\n\n  [1]:  https://media.geeksforgeeks.org/wp-content/uploads/20190719161521/core.jpg\"," +
-  "\"lang\": \"rus\"," +
-  "\"short_description\": \"eeksforgeeks.org/wp-content/uploads/20190719161521/core.jpg\"," +
-  "\"post_name\": \"NAME\"" +
-"}");
+            var post = new Post()
+            {
+                Html = "qweqeqejnfsdjfnsf\nsdfsfd`sdfsf\nsdf`sdfsfs\n\n\n    qweq\n\nqweq\n\n![qweqweqeqe][1]\n\n**qwe**\n\n*qfdsfs*\n\n  [1]:  https://media.geeksforgeeks.org/wp-content/uploads/20190719161521/core.jpg",
+                Lang = "rus",
+                ShortDescription = "eeksforgeeks.org/wp-content/uploads/20190719161521/core.jpg",
+                PostName = "NAME",
+                Views = 9,
+                UsersLike = new System.Collections.Generic.List<string> { "qwe", "qweew" },
+                Comments = new System.Collections.Generic.List<Comment>
+                {
+                    new Comment()
+                    {
+                         Html = "qweqeqksfdmfkfmekf",
+                         UsersLike = new System.Collections.Generic.List<string> { "qwe", "qweew" }
+
+                    },
+                    new Comment()
+                    {
+                         Html = "1123211qweqeqwe",
+                         UsersLike = new System.Collections.Generic.List<string> { "qwe", "qweew", "qweew" }
+
+                    }
+
+                }
+            };
+            return new JsonResult(post);
         }
 
         [HttpPost]
@@ -125,7 +146,7 @@ namespace ProjectAboutProjects.Controllers.api
                 {
                     Views = 0,
                     UserId = User.Identity.Name,
-                    NamePost = jObject["name_post"] == null ? null : jObject["name_post"].ToString(),
+                    PostName = jObject["name_post"] == null ? null : jObject["name_post"].ToString(),
                     Html = jObject["html"] == null ? null : jObject["html"].ToString(),
                     ShortDescription = jObject["short_description"] == null ? null : jObject["short_description"].ToString(),
                     Lang = jObject["lang"] == null ? null : jObject["lang"].ToString(),

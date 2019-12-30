@@ -75,7 +75,6 @@
 <script type="text/javascript">
     post()
     function post() {
-<<<<<<< HEAD
     var queryDict = {}
     location.search.substr(1).split("&").forEach(function(item) {queryDict[item.split("=")[0]] = item.split("=")[1]})
     $.ajax({
@@ -93,24 +92,6 @@
             $('#lang').html(data['lang']);
         }
     });
-=======
-        var queryDict = {}
-        location.search.substr(1).split("&").forEach(function (item) { queryDict[item.split("=")[0]] = item.split("=")[1] })
-        //$.ajax({
-        //    type: "GET",
-        //    url: '/Post/Search?id=' + queryDict['id'],
-        //    success: function (data) {
-        //        alert(data);
-        //        //data = JSON.parse(data);
-        //        alert('html = ' + data['hmtl']);
-        //        $('#post-name').html(data['post_name']);
-        //        $('#html').html(data['html']);
-        //        $('#post-likes').html(0);
-        //        $('#views').html(0);
-        //        $('#lang').html(data['lang']);
-        //    }
-        //});
->>>>>>> 6d835713f4f8ab42ea4a400e2d98f52230ece842
     }
     function sendComment() {
         //$.ajax({
