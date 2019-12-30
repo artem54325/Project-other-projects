@@ -1,0 +1,108 @@
+﻿#post-name {
+    text-align: center;
+    font-size: 35px;
+    margin-top: -25px;
+}
+
+#status {
+    display: inline-flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    height: 40px;
+    font-family: "-apple-system",BlinkMacSystemFont,Arial,sans-serif;
+    margin-right: 20px;
+    float: right;
+}
+
+.status {
+    padding: 15px;
+    font-size: 20px;
+}
+
+
+.comments {
+    margin-left: 20px;
+    max-width: 75%;
+    background: #ecebe6;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    padding: 10px;
+}
+
+.user-comment {
+    display: inline-block;
+    box-shadow: 0 0 5px rgba(0,0,0,0.5);
+    padding: 5px;
+    margin: 5px;
+}
+
+.user-comment-name {
+    font-size: 18px;
+}
+
+.img-user-comment {
+    padding-top: 5px;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+}
+
+.user-comment-data {
+    color: #868585;
+    font-size: 12px;
+    text-align: right;
+}
+
+#post-like-image {
+    width: 50px;
+    height: 50px;
+}
+
+#post-view-image {
+    width: 50px;
+    height: 50px;
+}
+
+#post-lang-image {
+    width: 50px;
+    height: 50px;
+}
+
+.container-status {
+    padding: 1px;
+    box-shadow: 0 0 3px rgba(0,0,0,0.5);
+    margin-left: 5px;
+    background: #ecebe6;
+}
+
+.container-status:hover {
+    box-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
+
+.comment-write {
+    margin: 15px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.5);
+    background: #ecebe6;
+}
+
+.comment-edit-panel {
+    width: 100%;
+    min-height: 250px;
+}
+#wmd-editor {
+    background: #ecebe6;
+}
+#wmd-input {
+    height: 250px;
+}
+
+#send-comment {
+    box-shadow: 0 0 5px rgba(0,0,0,0.5);
+    background: #ecebe6;
+    float:right;
+    margin-top: 5px;
+}
+#wmd-editor{
+    padding: 5px;
+}

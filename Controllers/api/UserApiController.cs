@@ -4,43 +4,36 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json.Linq;
 
 namespace ProjectAboutProjects.Controllers.api
 {
-    [Route("api/[controller]")]
+    [Route("api/User")]
     [ApiController]
     public class UserApiController : ControllerBase
     {
-        // GET: api/UserApi
         [HttpGet]
-        public IEnumerable<string> Get()
+        public async Task<JsonResult> Settings()
         {
-            return new string[] { "value1", "value2" };
+            return null;
         }
 
-        // GET: api/UserApi/5
-        [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
-        {
-            return "value";
-        }
-
-        // POST: api/UserApi
         [HttpPost]
-        public void Post([FromBody] string value)
+        public async Task<JsonResult> Settings([FromBody] JObject jObject)
         {
+            return null;
         }
 
-        // PUT: api/UserApi/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [HttpPost]
+        public async Task<JsonResult> GetUser([FromBody] string username)
         {
+            return null;
         }
 
-        // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        [HttpPost]
+        public async Task<JsonResult> GetAll()
         {
+            return null;
         }
     }
 }

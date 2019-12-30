@@ -157,7 +157,7 @@ namespace ProjectAboutProjects
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{culture=en}/{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }

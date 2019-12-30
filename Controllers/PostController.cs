@@ -28,6 +28,7 @@ namespace ProjectAboutProjects.Controllers
             //https://docs.microsoft.com/ru-ru/aspnet/web-api/overview/getting-started-with-aspnet-web-api/tutorial-your-first-web-api
             context = _context;
         }
+
         [HttpGet]
         public async Task<ActionResult> Index()
         {
@@ -41,11 +42,12 @@ namespace ProjectAboutProjects.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult> Post(string id)
+        public async Task<ActionResult> Post()
         {
             //CHECK ID
             return View();
         }
+<<<<<<< HEAD
 
         [HttpGet]
         public async Task<JsonResult> Posts()
@@ -214,5 +216,7 @@ namespace ProjectAboutProjects.Controllers
 
             return Json("{'status':true}");
         }
+=======
+>>>>>>> 6d835713f4f8ab42ea4a400e2d98f52230ece842
     }
 }

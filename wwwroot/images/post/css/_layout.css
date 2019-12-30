@@ -1,0 +1,238 @@
+body{
+    /* background: salmon; */
+}
+
+#wrapper, #container {
+    max-width: 960px;
+    margin: auto;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    position: relative;
+}
+#container{
+    height: 100vh;
+    background: #C4C4C4;
+}
+
+nav a {
+    text-decoration: none;
+}
+
+nav ul {
+    margin: 0;
+    padding: 0;
+}
+
+nav li {
+    list-style-position: inside;
+    font: 14px 'Oswald', sans-serif;
+    padding: 10px;
+}
+
+.top-menu li, .top-lang li {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 0;
+}
+
+.top-menu li.active, .top-lang li.active {
+    background: #29c5e6;
+    color: #000;
+    text-shadow: #fff 0 0 6px;
+}
+
+.top-menu a, .top-lang a, #sign-in {
+    color: #fff;
+    font-size: 1.14em;
+    font-weight: bold;
+    text-shadow: #000 0 0 6px;
+    text-decoration: none;
+}
+
+.top-menu{
+    margin-left: auto;
+    float: left;
+}
+
+.top-lang{
+    margin-left: auto;
+    float: right;
+    position: relative;
+    right: 57px;
+}
+
+#ava-header{
+    width: 42px;
+    height: 42px;
+    right: 5px;
+    position: absolute;
+    cursor: pointer;
+}
+
+#header{
+    overflow: hidden;
+    background: #C4C4C4;
+    margin-bottom: 4px;
+    height: 42px;
+}
+
+.img-user {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+}
+
+#sign-in{
+    font: 14px 'Oswald', sans-serif;
+    display: inline-block;
+    padding: 15px;
+    margin: 0;
+}
+
+#login-form{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    padding-bottom: 10px;
+    background: #C4C4C4;
+    position: absolute;
+    z-index: 99999;
+    opacity: 1;	
+    border-radius: 20px;
+}
+
+.input-login-form{
+    position: relative;
+    width: 90%;
+    left: 5%;
+    font-weight:bold;
+    font-size: 18px;
+    color:#000000;
+    margin-top: 10px;
+    text-align: center;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+    border-radius: 30px;
+    font-size: 14sp;
+}
+
+.login-login-form{
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.button-login-form{
+    background: #797878;
+    width: 40%;
+    margin-left: 6%;
+    height: 30px;
+    color: #ffff;
+    font-size: 18px;
+    border-radius: 10px;
+    border: #797878;
+}
+
+.video-bg:before {
+	content: '';
+	background: #000;
+	position: fixed; 
+	left: 0;
+	top: 0;
+	width: 100%; 
+	height: 100%;
+	opacity: 0.7;
+	z-index: 9999;
+}
+
+.error-login-form{
+    display: none;
+    font-size: 24px;
+    margin-top: -5px;
+    color: rgb(219, 14, 14);
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.close-login-form{
+    position: absolute;
+    float: right;
+    top: 10px;
+    right: 10px;
+    font: 14px Arial, sans-serif; 
+}
+
+.oauths-login-form{
+    margin-top: 10px;
+    text-align: center;
+}
+
+.oauth-login-form{
+    width: 60px;
+}
+
+
+.user, .user ul {
+    /* �弍仆�仍�磳仄 仂����仗� 亳 �弍亳�舒亠仄 仄舒�从亠�� � �仗亳�从仂于 */
+    display:block;
+    list-style: none; 
+    margin: 0; 
+    right:0; 
+    left: auto; 
+    padding: 0;
+    /*position: fixed;*/
+}
+.user {
+    padding: 0 5px; /* �仂仍�� */
+    font: 14px Arial, sans-serif; /* �舒�舒仄亠��� ��亳��舒 */
+    left: 302px;
+    height: 42px;
+}
+.user > li {
+    display: inline-block; /* �����舒亳于舒亠仄 仗仂 亞仂�亳亰仂仆�舒仍亳 */
+   /* border-right: 1px solid #fff; /* �亠仍舒�� 仍亳仆亳�� �仗�舒于舒 */
+    /*position: relative; /* ��仆仂�亳�亠仍�仆仂亠 仗仂亰亳�亳仂仆亳�仂于舒仆亳亠 */
+    width: 42px;
+    height: 42px;
+    position: absolute;
+    z-index: 9;
+}
+.user a {
+    text-decoration: none; /* 丕弍亳�舒亠仄 仗仂亟���从亳于舒仆亳亠 */
+    color: #4c4c4c; /* 丶于亠� ���仍仂从 */
+    display: block; /* �仍仂�仆�亠 ���仍从亳 */
+}
+.user > li > a {
+    padding: 10px 15px; /* �仂仍�� */
+    border-right: 1px solid #d8d8d8; /* 弌亠�舒�� 仍亳仆亳�� �仗�舒于舒 */
+    position: relative; 
+    z-index: 3; /* ��于仂亟亳仄 仗仂于亠�� 仂��舒仍�仆�� �仍亠仄亠仆�仂于 */
+}
+.user ul {
+    position: absolute; /* �弍�仂仍�ﾑ�仆仂亠 仗仂亰亳�亳仂仆亳�仂于舒仆亳亠 */
+    display: none; /* �����亠仄 仗仂亟仄亠仆�� */
+    width: 100px; /* 丿亳�亳仆舒 仗仂亟仄亠仆�� */
+    background: #fff; /* 丶于亠� �仂仆舒 */
+    box-shadow: 0 0 10px #666; /* �舒�舒仄亠��� �亠仆亳 */
+    text-align:right;
+}
+.user ul a {
+    padding: 5px 10px; /* �仂仍�� */
+}
+.user ul a:hover {
+    background: #008df2; /* 丶于亠� �仂仆舒 */
+    color: #fff; /* 丶于亠� �亠从��舒 */
+}
+.user li:hover ul {
+    display: block; /* �仂从舒亰�于舒亠仄 仗仂亟仄亠仆�� */
+}
+.user > li:hover::before {
+    content: ''; /* 弌仂亰亟舒�仄 仗���仂亶 仗�亠于亟仂�仍亠仄亠仆� */
+    top: 0; left: 0; right: 0; bottom: 0; /* �舒亰仄亠� �仂于仗舒亟舒亠� � 仗�仆从�仂仄 仄亠仆�� */
+    box-shadow: 0 5px 10px #666; /* �舒�舒仄亠��� �亠仆亳 */
+    position: absolute; /* �弍�仂仍�ﾑ�仆仂亠 仗仂亰亳�亳仂仆亳�仂于舒仆亳亠 */
+}
+.user > li:hover > a {
+    background: #fff; /* 丶于亠� 

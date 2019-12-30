@@ -7,28 +7,75 @@
 <link href="~/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="~/css/homeIndex.css">
 <link rel="stylesheet" href="~/css/post/index.css">
+<link rel="stylesheet" type="text/css" href="~/css/wmd.css" />
+<link rel="stylesheet" href="~/css/post/post.css">
 
 
-<div class="container">
-    <div class="content">
-            <div id="post-name"></div>
-            <div id="html">hmtl</div>
-            <span id="post-likes">25</span>
-            <span id="views">100</span>
-            <span id="lang">lang</span>
-    </div>
-    <div class="comments">
-        <div class="coomment">
-            <div class="text">COMMENTLIKE</div>
-            <span class="likes-comment">10</span>
-            <span class="user">35</span>
+<div class="content">
+    <div id="status">
+        <div class="container-status" onclick="sendLike()">
+            <img class="status" id="post-like-image" src="~/images/post/like.png" />
+            <span class="status" id="post-likes">25</span>
+        </div>
+        <div class="container-status">
+            <img class="status" id="post-view-image" src="~/images/post/view.png" />
+            <span class="status" id="views">100</span>
+        </div>
+        <div class="container-status">
+            <img class="status" id="post-lang-image" src="~/images/post/lang.png" />
+            <span class="status" id="lang">rus</span>
         </div>
     </div>
+    <div id="post-name">NAME</div>
+    <div id="html">
+        qweqeqejnfsdjfnsf\n
+
+        sdfsfd`sdfsf
+        sdf`sdfsfs
+
+
+        qweq
+
+        qweq
+
+        ![qweqweqeqe][1]
+
+        **qwe**
+
+        *qfdsfs*
+
+        [1]:  https://media.geeksforgeeks.org/wp-content/uploads/20190719161521/core.jpg\
+    </div>
+
+</div>
+<div class="comments">
+    <div class="comment">
+        <div class="user-comment">
+            <img class="img-user-comment" src="~/images/auth/pretty-ava.jpg" />
+            <span class="user-comment-name">USER</span>
+            <span class="user-comment-data">DATA qwe asdqwe</span>
+        </div>
+
+        <div class="text-comment">
+            COMMENTLIKEqwelqkjfsdlkfjslkfjslfksjfmkslgnfjkghdjfkgljslkfjfakljg
+            fkasjglakfajg;ldkfls;djfksl jfsfklfj sldkf jsd kfsjdflksjgdfkhg
+            djflg sdklfjdklsslkfjsfsljkf jslf ksjfsklf  sdk
+        </div>
+        <span class="likes-comment">10</span>
+    </div>
+</div>
+<div class="comment-write">
+    <div id="wmd-editor" class="wmd-panel">
+        <div id="wmd-button-bar"></div>
+        <textarea id="wmd-input"></textarea>
+    </div>
+    <input type="submit" id="send-comment" value="Send Comment" onclick="sendComment()" />
 </div>
 
 <script type="text/javascript">
     post()
     function post() {
+<<<<<<< HEAD
     var queryDict = {}
     location.search.substr(1).split("&").forEach(function(item) {queryDict[item.split("=")[0]] = item.split("=")[1]})
     $.ajax({
@@ -46,16 +93,61 @@
             $('#lang').html(data['lang']);
         }
     });
+=======
+        var queryDict = {}
+        location.search.substr(1).split("&").forEach(function (item) { queryDict[item.split("=")[0]] = item.split("=")[1] })
+        //$.ajax({
+        //    type: "GET",
+        //    url: '/Post/Search?id=' + queryDict['id'],
+        //    success: function (data) {
+        //        alert(data);
+        //        //data = JSON.parse(data);
+        //        alert('html = ' + data['hmtl']);
+        //        $('#post-name').html(data['post_name']);
+        //        $('#html').html(data['html']);
+        //        $('#post-likes').html(0);
+        //        $('#views').html(0);
+        //        $('#lang').html(data['lang']);
+        //    }
+        //});
+>>>>>>> 6d835713f4f8ab42ea4a400e2d98f52230ece842
     }
-    function requestComment() {
-
+    function sendComment() {
+        //$.ajax({
+        //    type: "GET",
+        //    url: '/Post/Search?id=' + queryDict['id'],
+        //    success: function (data) {
+        //        alert(data);
+        //        //data = JSON.parse(data);
+        //        alert('html = ' + data['hmtl']);
+        //        $('#post-name').html(data['post_name']);
+        //        $('#html').html(data['html']);
+        //        $('#post-likes').html(0);
+        //        $('#views').html(0);
+        //        $('#lang').html(data['lang']);
+        //    }
+        //});
     }
-    function requestLike() {
-
+    function sendLike() {
+        //$.ajax({
+        //    type: "GET",
+        //    url: '/Post/Search?id=' + queryDict['id'],
+        //    success: function (data) {
+        //        alert(data);
+        //        //data = JSON.parse(data);
+        //        alert('html = ' + data['hmtl']);
+        //        $('#post-name').html(data['post_name']);
+        //        $('#html').html(data['html']);
+        //        $('#post-likes').html(0);
+        //        $('#views').html(0);
+        //        $('#lang').html(data['lang']);
+        //    }
+        //});
     }
 </script>
 
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script src="bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="~/js/post/showdown.js"></script>
+<script src="~/bootstrap/js/bootstrap.min.js"></script>

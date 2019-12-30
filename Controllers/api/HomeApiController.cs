@@ -7,12 +7,12 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ProjectAboutProjects.Controllers.api
 {
-    [Route("api/[controller]")]
+    [Route("api/home")]
     [ApiController]
     public class HomeApiController : ControllerBase
     {
         // GET: api/HomeApi
-        [HttpGet]
+        [HttpGet("get")]
         public IEnumerable<string> Get()
         {
             return new string[] { "value1", "value2" };

@@ -1,46 +1,40 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
 
 namespace ProjectAboutProjects.Controllers.api
 {
-    [Route("api/[controller]")]
+    [Route("api/player")]
     [ApiController]
     public class PlayerApiController : ControllerBase
     {
-        // GET: api/PlayerApi
-        [HttpGet]
-        public IEnumerable<string> Get()
+        [HttpPost("Add")]
+        public async Task<JsonResult> Add([FromBody] Newtonsoft.Json.Linq.JObject jObject)
         {
-            return new string[] { "value1", "value2" };
+            if (User.Identity.IsAuthenticated)
+            {
+                //Если не авторзован возвращать 403
+            }
+            string stream = (string) jObject["stream"];
+            if (stream == null)
+            {
+                
+            }
+            return null;
         }
 
-        // GET: api/PlayerApi/5
-        //[HttpGet("{id}", Name = "Get")]
-        //public string Get(int id)
-        //{
-        //    return "value";
-        //}
-
-        // POST: api/PlayerApi
-        [HttpPost]
-        public void Post([FromBody] string value)
+        [HttpPost("Get")]
+        public async Task<JsonResult> Get([FromBody] Newtonsoft.Json.Linq.JObject jObject)
         {
-        }
+            if (User.Identity.IsAuthenticated)
+            {
+                //Если не авторзован возвращать 403
+            }
+            string stream = (string) jObject["stream"];
+            if (stream == null)
+            {
 
-        // PUT: api/PlayerApi/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
+            }
+            return null;
         }
     }
 }
