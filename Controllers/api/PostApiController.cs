@@ -25,15 +25,16 @@ namespace ProjectAboutProjects.Controllers.api
 
 
 
-        [HttpGet]
+        [HttpGet("posts")]
         public async Task<JsonResult> Posts()
         {
             var posts = context.Posts.ToList();
             return new JsonResult(posts);
         }
 
-        [HttpGet]
-        public async Task<JsonResult> Search(string id)
+        [HttpGet("search")]
+        [FormatReponseFilter]
+        public async Task<IActionResult> Search(string id)
         {
             //var post = context.Posts.Where(a => a.Id.Equals(id)).SingleOrDefault();
             //if (post == null)
@@ -70,10 +71,10 @@ namespace ProjectAboutProjects.Controllers.api
 
                 }
             };
-            return new JsonResult(post);
+            return new ObjectResult(post);
         }
 
-        [HttpPost]
+        [HttpPost("postLike")]
         public async Task<JsonResult> PostLike([FromBody] JObject jObject)
         {
             try
@@ -105,7 +106,7 @@ namespace ProjectAboutProjects.Controllers.api
             }
         }
 
-        [HttpPost]
+        [HttpPost("commentLike")]
         public async Task<JsonResult> CommentLike([FromBody] JObject jObject)
         {
             try
@@ -128,6 +129,7 @@ namespace ProjectAboutProjects.Controllers.api
                 context.Comments.Add(com);
                 context.SaveChangesAsync();
                 //context.SaveChanges();
+
                 return new JsonResult("{'status':true, 'activiti':" + activiti + "}");
             }
             catch (Exception e)
@@ -136,7 +138,7 @@ namespace ProjectAboutProjects.Controllers.api
             }
         }
 
-        [HttpPost]
+        [HttpPost("writePost")]
         public async Task<JsonResult> WritePost([FromBody] JObject jObject)
         {
             try
@@ -165,7 +167,7 @@ namespace ProjectAboutProjects.Controllers.api
             return new JsonResult("{'status':true}");
         }
 
-        [HttpPost]
+        [HttpPost("writeComment")]
         public async Task<JsonResult> WriteComment([FromBody] Newtonsoft.Json.Linq.JObject jObject)
         {
             try

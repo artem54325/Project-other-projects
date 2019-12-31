@@ -3,18 +3,15 @@
     ViewData["Title"] = "WritePost";
 }
 
-
 <script src="~/js/video/stream.js" asp-append-version="true" defer="defer"></script>
 <link rel="stylesheet" href="~/css/post/write.css" asp-append-version="true" />
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 <link rel="stylesheet" type="text/css" href="~/css/wmd.css" />
 <script type="text/javascript" src="~/js/post/showdown.js"></script>
 
-<div class="comment-write">   
+<div class="comment-write">
     <span class="comment-write-name">Name post:</span>
-    <input type="text"id="post_name"/>
+    <input type="text" id="post_name" />
 </div>
 
 
@@ -24,10 +21,10 @@
     <textarea id="wmd-input"></textarea>
 </div>
 <select id="language" name="lang">
-    <option value ="rus">rus</option>
-    <option value ="eng">eng</option>
-</select> 
-<input type="submit" id="sendPost" value="Send post"/>
+    <option value="rus">rus</option>
+    <option value="eng">eng</option>
+</select>
+<input type="submit" id="sendPost" value="Send post" />
 
 <script type="text/javascript" src="~/js/post/wmd.js"></script>
 
@@ -37,6 +34,7 @@
         console.log($('#post_name').val())
         var html = $('#wmd-input').val();
         var short_html = '';
+
         if (html.length > 120) {
             short_html = html.substr(120);
         } else {
@@ -44,23 +42,23 @@
         }
 
         $.ajax({
-    url: '/post/WritePost',
-    dataType: 'json',
-    type: 'post',
-    contentType: 'application/json',
+            url: '/post/WritePost',
+            dataType: 'json',
+            type: 'post',
+            contentType: 'application/json',
             data: JSON.stringify({
                 "html": html,
                 "lang": $('#language option:selected').val(),
                 "short_description": short_html,
                 "post_name": $('#post_name').val()
             }),//$( "#myselect option:selected" ).text();
-    processData: false,
+            processData: false,
             success: function (data, textStatus, jQxhr) {
                 alert(JSON.stringify(data));
-    },
-    error: function( jqXhr, textStatus, errorThrown ){
-        console.log( errorThrown );
-    }
-});
+            },
+            error: function (jqXhr, textStatus, errorThrown) {
+                console.log(errorThrown);
+            }
+        });
     })
 </script>

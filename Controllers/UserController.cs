@@ -41,6 +41,11 @@ namespace ProjectAboutProjects.Controllers
             }
         }
 
+        public async Task<ActionResult> Likes()
+        {
+            return View("Likes");
+        }
+
         public async Task<ActionResult> Settings()
         {
             return View("Settings");

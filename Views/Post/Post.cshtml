@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="~/css/homeIndex.css">
 <link rel="stylesheet" href="~/css/post/index.css">
 <link rel="stylesheet" type="text/css" href="~/css/wmd.css" />
+<script type="text/javascript" src="~/js/post/showdown.js"></script>
 <link rel="stylesheet" href="~/css/post/post.css">
 
 
@@ -28,25 +29,7 @@
     </div>
     <div id="post-name">NAME</div>
     <div id="html">
-        qweqeqejnfsdjfnsf\n
-
-        sdfsfd`sdfsf
-        sdf`sdfsfs
-
-
-        qweq
-
-        qweq
-
-        ![qweqweqeqe][1]
-
-        **qwe**
-
-        *qfdsfs*
-
-        [1]:  https://media.geeksforgeeks.org/wp-content/uploads/20190719161521/core.jpg\
     </div>
-
 </div>
 <div class="comments">
     <div class="comment">
@@ -75,28 +58,34 @@
 <script type="text/javascript">
     post()
     function post() {
-    var queryDict = {}
-    location.search.substr(1).split("&").forEach(function(item) {queryDict[item.split("=")[0]] = item.split("=")[1]})
-    $.ajax({
-        type: "GET",
-        url: '/Post/Search?id='+queryDict['id'],
-        success: function (data) {
-            console.log(data['html']);
-            console.log(JSON.stringify(data));
-            console.log(data.html);
+        var queryDict = {}
+        location.search.substr(1).split("&").forEach(function (item) { queryDict[item.split("=")[0]] = item.split("=")[1] })
+        $.ajax({
+            type: "GET",
+            url: '/api/Post/Search?id=' + queryDict['id'],
+            headers: {
+                "Accept": "application/json"
+            },
+            success: function (data) {
+                console.log(data);
+                //console.log(data['html']);
 
-            $('#post-name').html(data['postName']);
-            $('#html').html(data['html']);
-            $('#post-likes').html(data['views']);
-            $('#views').html(data['views']);
-            $('#lang').html(data['lang']);
-        }
-    });
+                //$('#post-name').html(data['postName']);
+                //$('#html').html(data['html']);
+                //$('#post-likes').html(data['views']);
+                //$('#views').html(data['views']);
+                //$('#lang').html(data['lang']);
+            }
+        });
     }
+
     function sendComment() {
         //$.ajax({
         //    type: "GET",
         //    url: '/Post/Search?id=' + queryDict['id'],
+        //headers: {
+        //    "Accept": "application/json"
+        //},
         //    success: function (data) {
         //        alert(data);
         //        //data = JSON.parse(data);
@@ -109,10 +98,14 @@
         //    }
         //});
     }
+
     function sendLike() {
         //$.ajax({
         //    type: "GET",
         //    url: '/Post/Search?id=' + queryDict['id'],
+        //headers: {
+        //    "Accept": "application/json"
+        //},
         //    success: function (data) {
         //        alert(data);
         //        //data = JSON.parse(data);
@@ -125,6 +118,7 @@
         //    }
         //});
     }
+
 </script>
 
 

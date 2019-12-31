@@ -1,10 +1,26 @@
-.title-settings{
+.title-settings {
     text-align: center;
     font-size: 36px;
     padding-top: 10px;
     color: #fff;
     font-weight: bold;
     text-shadow: #000 0 0 6px;
+    margin-bottom: 30px;
+}
+
+.select-role {
+    width: 400px;
+    height: 40px;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+    border-radius: 30px;
+    text-align: center;
+    text-align-last: center;
+}
+option {
+    text-align: center;
+    text-align-last: center;
 }
 
 .input-settings[type=text], .input-settings[type=password] {
@@ -15,27 +31,28 @@
     border: none;
     background: #f1f1f1;
     border-radius: 30px;
-  }
-  
-  .input-settings[type=text]:focus, .input-settings[type=password]:focus {
-    background-color: #ddd;
-    outline: none;
-    font-size: 14sp;
-    height: 40px;
-  }
+}
 
-  .menu-settings{
+    .input-settings[type=text]:focus,
+    .input-settings[type=password]:focus {
+        background-color: #ddd;
+        outline: none;
+        font-size: 14sp;
+        height: 40px;
+    }
+
+.menu-settings {
     text-align: center;
-  }
+}
 
-  .name-input-registration{
-      font-size: 18px;
-      color: #fff;
-      font-weight: bold;
-      text-shadow: #000 0 0 6px;
-  }
+.name-input-registration {
+    font-size: 18px;
+    color: #fff;
+    font-weight: bold;
+    text-shadow: #000 0 0 6px;
+}
 
-  .container-registration{
+.container-registration {
     overflow: hidden;
     margin-right: auto;
     margin-left: auto;
@@ -43,10 +60,10 @@
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     padding: 0px;
-    text-align:center;
-  }
+    text-align: center;
+}
 
-  .button-registration{
+.button-registration {
     font-size: 18px;
     color: #fff;
     font-weight: bold;
@@ -57,14 +74,14 @@
     height: 40px;
     vertical-align: middle;
     border-radius: 30px;
-    box-shadow:0 1px 2px #5e5d5b;
-  }
+    box-shadow: 0 1px 2px #5e5d5b;
+}
 
-  .status-registration{
-      background: green;
-  }
+.status-registration {
+    background: green;
+}
 
-  .save-settings{
+.save-settings {
     font-size: 18px;
     color: #fff;
     font-weight: bold;
@@ -74,13 +91,16 @@
     height: 40px;
     vertical-align: middle;
     border-radius: 30px;
-    box-shadow:0 1px 2px #5e5d5b;
+    box-shadow: 0 1px 2px #5e5d5b;
     margin-left: 15px;
-  }
+    margin-top: 15px;
+    margin-bottom: 30px;
+}
 
-  .label-settings{
+.label-settings {
+    margin-top: 5px;
     font-size: 18px;
     color: #fff;
     font-weight: bold;
     text-shadow: #000 0 0 6px;
-  }
+}

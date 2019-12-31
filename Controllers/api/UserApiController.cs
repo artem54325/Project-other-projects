@@ -12,26 +12,20 @@ namespace ProjectAboutProjects.Controllers.api
     [ApiController]
     public class UserApiController : ControllerBase
     {
-        [HttpGet]
+        [HttpGet("Settings")]
         public async Task<JsonResult> Settings()
         {
             return null;
         }
 
-        [HttpPost]
+        [HttpPost("Settings")]
         public async Task<JsonResult> Settings([FromBody] JObject jObject)
         {
             return null;
         }
 
-        [HttpPost]
-        public async Task<JsonResult> GetUser([FromBody] string username)
-        {
-            return null;
-        }
-
-        [HttpPost]
-        public async Task<JsonResult> GetAll()
+        [HttpPost("Password")]
+        public async Task<JsonResult> Password([FromBody] JObject jObject)
         {
             return null;
         }
