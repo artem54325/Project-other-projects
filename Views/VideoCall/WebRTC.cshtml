@@ -1,10 +1,10 @@
 ﻿@{
-//ViewData["Title"] = "WebRTC";
+    //ViewData["Title"] = "WebRTC";
 }
 
 
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" type="text/css" />
-    <link rel="stylesheet" href="~/css/webrtc.css" type="text/css" />
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" type="text/css" />
+<link rel="stylesheet" href="~/css/webrtc.css" type="text/css" />
 
 
 <div class="roomCreate">
@@ -22,8 +22,7 @@
                 <th></th>
             </tr>
         </thead>
-        <tbody>
-        </tbody>
+        <tbody></tbody>
     </table>
 </div>
 
@@ -51,13 +50,13 @@
                 <th>Received Files</th>
             </tr>
         </thead>
-        <tbody>
-        </tbody>
+        <tbody></tbody>
     </table>
 </div>
+
 @section StyleSheets{
-    <script type="text/javascript" src="~/js/browser/signalr.js" defer="defer"></script>
     <script type="text/javascript" src="https://webrtc.github.io/adapter/adapter-latest.js" defer="defer"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" defer="defer"></script>
-    <script type="text/javascript" src="~/js/video/webrtc.js" defer="defer"></script>
+    <script type="text/javascript" src="~/js/browser/signalr.js" defer="defer"></script>
+    <script type="text/javascript" src="~/js/browser/webrtc.js" defer="defer"></script>
 }

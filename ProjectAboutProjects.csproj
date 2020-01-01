@@ -33,7 +33,6 @@
     <Folder Include="wwwroot\js\video\" />
     <Folder Include="Hubs\" />
     <Folder Include="Views\Player\" />
-    <Folder Include="wwwroot\js\browser\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Controllers\HomeApiController.cs" />

@@ -404,8 +404,11 @@ var paint;
 
 
 function addClick(x, y, dragging) {
-
-    connection.invoke("SendPoint", JSON.stringify({ clickX: x, clickY: y, dragging: dragging ? true : false })).catch(function (err) {
+    if (myRoomId == undefined) {
+        alert("Enter a room");
+        return;
+    }
+    connection.invoke("SendPoint", myRoomId, JSON.stringify({ clickX: x, clickY: y, dragging: dragging ? true : false })).catch(function (err) {
         return console.error(err.toString());
     });
     //clickX.push(x);

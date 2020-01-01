@@ -40,9 +40,9 @@ namespace ProjectAboutProjects.Hubs
             }
         }
 
-        public async Task SendPoint(string points)
+        public async Task SendPoint(string roomId, string points)
         {
-            await Clients.All.SendAsync("ReceivePoints", points);
+            await Clients.OthersInGroup(roomId).SendAsync("ReceivePoints", points);
         }
 
         public async Task Join(string roomId)
