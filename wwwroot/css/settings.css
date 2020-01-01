@@ -23,7 +23,7 @@ option {
     text-align-last: center;
 }
 
-.input-settings[type=text], .input-settings[type=password] {
+.input-settings[type=text], .input-settings[type=password], .input-settings[type=email] {
     width: 400px;
     padding: 15px;
     height: 40px;

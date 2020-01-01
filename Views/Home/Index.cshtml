@@ -35,3 +35,28 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="bootstrap/js/bootstrap.min.js"></script>
+
+@*<script type="text/javascript">
+    $.post(
+        "/api/User/Password",
+        {
+            passwordOld: "param1",
+            passwordNew: "param2"
+        },
+        function (data) {
+            alert(JSON.stringify(data));
+        }
+    );
+    $.ajax({
+        url: '/api/User/Settings',
+        type: 'POST',
+        data: JSON.stringify({
+            name: "Чайка",
+            price: 200,
+        }),
+        contentType: "application/json;charset=utf-8",
+        success: function (data) {
+            alert('Данные отправлены');
+        }
+    });
+</script>*@

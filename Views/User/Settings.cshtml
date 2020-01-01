@@ -20,7 +20,7 @@
         <option value="user">User</option>
     </select>
     <br />
-    <button class="save-settings">Save</button>
+    <button class="save-settings" onclick="requestSettings()">Save</button>
 
     <p class="label-settings">Old password</p>
     <input class="input-settings" type="password" placeholder="Password" id="oldpassword"/>
@@ -28,12 +28,15 @@
     <p class="label-settings">New password</p>
     <input class="input-settings" type="password" placeholder="Password" id="newpassword"/>
     <br />
-    <button class="save-settings">Save</button>
+    <button class="save-settings" onclick="requestPassword()">Save</button>
+
     <script type="text/javascript">
+        getSettings();
         function getSettings() {
             $.ajax({
                 type: "GET",
-                url: '/User/Settings',
+                url: '/api/User/Settings',
+                contentType: "application/json;charset=utf-8",
                 success: function (data) {
                     console.log(JSON.stringify(data));
 
@@ -45,10 +48,11 @@
             });
         }
 
-        function requestSettings() {
+        function requestPassword() {
             $.ajax({
                 type: "POST",
-                url: '/User/Password',
+                url: '/api/User/Password',
+                contentType: "application/json;charset=utf-8",
                 data: JSON.stringify({
                     oldpassword: $('#oldpassword').val(),
                     newpassword: $('#newpassword').val(),
@@ -59,10 +63,11 @@
             });
         }
 
-        function requestPassword() {
+        function requestSettings() {
             $.ajax({
                 type: "POST",
-                url: '/User/Settings',
+                url: '/api/User/Settings',
+                contentType: "application/json;charset=utf-8",
                 data: JSON.stringify({
                     fullname: $('#fullname').val(),
                     username: $('#username').val(),
