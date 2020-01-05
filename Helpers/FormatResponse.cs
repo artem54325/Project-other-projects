@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Mvc.Formatters.Xml.Extensions;
-using ProjectAboutProjects.Helpers;
+using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using System;
 
 namespace ProjectAboutProjects
@@ -25,13 +25,20 @@ namespace ProjectAboutProjects
                 filterContext.Result = new XmlResult(_result.Value);
                 break;
                 case FormatResponseType.View:
-                    filterContext.Result = new ViewResult
-                    {
-                        ViewName = _result.View,
-                        //ViewData = _result.Value// Create your view data here, might be your result
-                    };
 
-                    break;
+                var v = new ViewResult
+                {
+                    ViewName = _result.View
+                };
+
+                ViewDataDictionary dataDictionary = new ViewDataDictionary(v.ViewData);
+                dataDictionary.Add("Data", _result.Value);
+                v.ViewData = dataDictionary;
+                filterContext.Result = v;
+
+                filterContext.ExceptionHandled = true;
+
+                break;
 
                 case FormatResponseType.Unknown:
                 default:
@@ -47,19 +54,29 @@ namespace ProjectAboutProjects
             switch (_contentType)
             {
                 case string e when (e.Contains("/xml")):
-                    _requestedType = FormatResponseType.Xml;
-                    break;
+                _requestedType = FormatResponseType.Xml;
+                break;
                 case string e when (e.Contains("/html")):
-                    _requestedType = FormatResponseType.View;
-                    break;
+                _requestedType = FormatResponseType.View;
+                break;
                 case string s when (s.Contains("application/json")):
                 default:
-                    _requestedType = FormatResponseType.Json;
-                    break;
+                _requestedType = FormatResponseType.Json;
+                break;
             }
 
             _requestedType = FormatResponseType.View;//Убрать после
 
+        }
+    }
+
+    public class MyOjbectResult : ObjectResult
+    {
+        public string View { get; set; }
+
+        public MyOjbectResult(object value, string view) : base(value)
+        {
+            this.View = view;
         }
     }
 }
