@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json.Linq;
 using ProjectAboutProjects.DAL;
+using ProjectAboutProjects.Helpers;
 using ProjectAboutProjects.Models;
 
 namespace ProjectAboutProjects.Controllers.api
@@ -71,10 +72,11 @@ namespace ProjectAboutProjects.Controllers.api
 
                 }
             };
-            return new ObjectResult(post);
+            return new MyOjbectResult(post, "post");
         }
 
         [HttpPost("postLike")]
+        [FormatReponseFilter]
         public async Task<JsonResult> PostLike([FromBody] JObject jObject)
         {
             try

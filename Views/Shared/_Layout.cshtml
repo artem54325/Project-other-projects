@@ -58,7 +58,7 @@
                     </script>
                 </ul>
                 <label id="ava-header" for="ava-header">
-                    @if (User.Identity.IsAuthenticated)
+                    @if (!User.Identity.IsAuthenticated)
                     {
                        
                             <div id="sign-in">Sign in</div>

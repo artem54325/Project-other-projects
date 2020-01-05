@@ -33,18 +33,31 @@
     <Folder Include="wwwroot\js\video\" />
     <Folder Include="Hubs\" />
     <Folder Include="Views\Player\" />
+    <Folder Include="Controllers\University\" />
+    <Folder Include="Views\PostApi\" />
+    <Folder Include="Views\University\" />
+    <Folder Include="Views\Questions\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Controllers\HomeApiController.cs" />
     <Compile Remove="Views\Settings\Index.cs" />
     <Compile Remove="Controllers\ProjectController.cs" />
+    <Compile Remove="Views\PostApi\post.cs" />
+    <Compile Remove="Controllers\University\EmptyEnumeration.cs" />
+    <Compile Remove="Controllers\University\CreateQuestions.cs" />
+    <Compile Remove="Views\University\Index.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="wwwroot\css\authorization.css" />
     <Content Remove="wwwroot\js\video\site.min.js" />
     <Content Remove="wwwroot\js\browser\signalr %28копировать%29.min.js" />
+    <Content Remove="Views\University\CreateQuestions.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.AspNetCore.Mvc.Core, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Views\PostApi\post.html" />
+    <None Remove="Views\University\CreateQuestionscshtml.html" />
   </ItemGroup>
 </Project>
