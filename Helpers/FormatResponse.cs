@@ -25,19 +25,12 @@ namespace ProjectAboutProjects
                 filterContext.Result = new XmlResult(_result.Value);
                 break;
                 case FormatResponseType.View:
-
-                var v = new ViewResult
+                filterContext.Result = new ViewResult
                 {
-                    ViewName = _result.View
+                    ViewName = _result.View,
+                    ViewData = _result.ViewData
                 };
-
-                ViewDataDictionary dataDictionary = new ViewDataDictionary(v.ViewData);
-                dataDictionary.Add("Data", _result.Value);
-                v.ViewData = dataDictionary;
-                filterContext.Result = v;
-
                 filterContext.ExceptionHandled = true;
-
                 break;
 
                 case FormatResponseType.Unknown:
@@ -73,10 +66,13 @@ namespace ProjectAboutProjects
     public class MyOjbectResult : ObjectResult
     {
         public string View { get; set; }
+        public ViewDataDictionary ViewData { get; set; }
 
-        public MyOjbectResult(object value, string view) : base(value)
+        public MyOjbectResult(object value, string view, ViewDataDictionary viewData) : base(value)
         {
             this.View = view;
+            this.ViewData = viewData;
+            this.ViewData.Add("Data", value);
         }
     }
 }

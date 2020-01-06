@@ -11,7 +11,6 @@ using ProjectAboutProjects.Models;
 namespace ProjectAboutProjects.Controllers.api
 {
     [Route("api/Post")]
-    //[ApiController]
     public class PostApiController : Controller
     {
 
@@ -34,7 +33,7 @@ namespace ProjectAboutProjects.Controllers.api
         }
 
         [HttpGet("search")]
-        //[FormatReponseFilter]
+        [FormatReponseFilter]
         public async Task<IActionResult> Search(string id)
         {
             //var post = context.Posts.Where(a => a.Id.Equals(id)).SingleOrDefault();
@@ -72,8 +71,9 @@ namespace ProjectAboutProjects.Controllers.api
 
                 }
             };
-            return new JsonResult(post);
-            //return new MyOjbectResult(post, "post");
+            
+            //return new JsonResult(post);
+            return new MyOjbectResult("qweqwe", "Create", ViewData);
         }
 
         [HttpPost("postLike")]
