@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using ProjectAboutProjects.DAL;
 using ProjectAboutProjects.Models;
@@ -71,9 +72,10 @@ namespace ProjectAboutProjects.Controllers.api
 
                 }
             };
-            
+
             //return new JsonResult(post);
-            return new MyOjbectResult("qweqwe", "Create", ViewData);
+            
+            return new MyOjbectResult(JsonConvert.SerializeObject(post), "Create", ViewData);
         }
 
         [HttpPost("postLike")]
