@@ -18,7 +18,6 @@ namespace ProjectAboutProjects.Controllers.api
         [HttpGet("Settings")]
         public async Task<JsonResult> Settings()
         {
-
             return null;
         }
 

@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json.Linq;
 using ProjectAboutProjects.DAL;
 using ProjectAboutProjects.Models;
 
@@ -19,9 +20,14 @@ namespace ProjectAboutProjects.Controllers
             context = _context;
         }
 
+        [FormatReponseFilter]
         public async Task<ActionResult> Index()
         {
-            return View();
+            var j = new
+            {
+
+            };
+            return new MyOjbectResult(j, "Index", ViewData);
         }
 
         public async Task<bool> ChangeLang(string lang)

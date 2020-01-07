@@ -14,25 +14,35 @@ namespace ProjectAboutProjects
         public void OnActionExecuted(ActionExecutedContext filterContext)
         {
             var _result = (MyOjbectResult) filterContext.Result;
+            if(_result == null)
+            {
+                filterContext.Result = new StatusCodeResult(404);
+            }
+            //var data = new { Data = _result.Value };
             switch (_requestedType)
             {
                 //https://localhost:44342/api/Post/Search?id=qwe
                 case FormatResponseType.Json:
-                var data = new { Data = _result.Value };
-                filterContext.Result = new JsonResult(data);
+                filterContext.Result = new JsonResult(_result.Value);
                 break;
                 case FormatResponseType.Xml:
                 filterContext.Result = new XmlResult(_result.Value);
                 break;
                 case FormatResponseType.View:
-                filterContext.Result = new ViewResult
+                if (_result.View == null)
                 {
-                    ViewName = _result.View,
-                    ViewData = _result.ViewData
-                };
-                filterContext.ExceptionHandled = true;
+                    filterContext.Result = new JsonResult(_result.Value);
+                }
+                else
+                {
+                    filterContext.Result = new ViewResult
+                    {
+                        ViewName = _result.View,
+                        ViewData = _result.ViewData
+                    };
+                    filterContext.ExceptionHandled = true;
+                }
                 break;
-
                 case FormatResponseType.Unknown:
                 default:
                 throw new InvalidOperationException("Uknown Content Type ain Accept Header");
@@ -44,19 +54,19 @@ namespace ProjectAboutProjects
 
             var _contentType = filterContext.HttpContext.Request.Headers["Accept"];
 
-            switch (_contentType)
-            {
-                case string e when (e.Contains("/xml")):
-                _requestedType = FormatResponseType.Xml;
-                break;
-                case string e when (e.Contains("/html")):
-                _requestedType = FormatResponseType.View;
-                break;
-                case string s when (s.Contains("application/json")):
-                default:
-                _requestedType = FormatResponseType.Json;
-                break;
-            }
+            //switch (_contentType)
+            //{
+            //    case string e when (e.Contains("/xml")):
+            //    _requestedType = FormatResponseType.Xml;
+            //    break;
+            //    case string e when (e.Contains("/html")):
+            //    _requestedType = FormatResponseType.View;
+            //    break;
+            //    case string s when (s.Contains("application/json")):
+            //    default:
+            //    _requestedType = FormatResponseType.Json;
+            //    break;
+            //}
 
             _requestedType = FormatResponseType.View;//Убрать после
 
@@ -67,6 +77,12 @@ namespace ProjectAboutProjects
     {
         public string View { get; set; }
         public ViewDataDictionary ViewData { get; set; }
+
+        public MyOjbectResult(object value) : base(value)
+        {
+            View = null;
+            ViewData = null;
+        }
 
         public MyOjbectResult(object value, string view, ViewDataDictionary viewData) : base(value)
         {

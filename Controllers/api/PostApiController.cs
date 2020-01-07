@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using ProjectAboutProjects.DAL;
 using ProjectAboutProjects.Models;
+using System;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace ProjectAboutProjects.Controllers.api
 {
@@ -23,14 +21,13 @@ namespace ProjectAboutProjects.Controllers.api
             context = _context;
         }
 
-
-
         [HttpGet("posts")]
-        public async Task<JsonResult> Posts()
+        [FormatReponseFilter]
+        public async Task<IActionResult> Posts()
         {
             var posts = context.Posts.ToList();
-            
-            return new JsonResult(posts);
+
+            return new MyOjbectResult(posts);
         }
 
         [HttpGet("search")]
@@ -73,78 +70,98 @@ namespace ProjectAboutProjects.Controllers.api
                 }
             };
 
-            //return new JsonResult(post);
-            
-            return new MyOjbectResult(JsonConvert.SerializeObject(post), "Create", ViewData);
+            return new MyOjbectResult(JsonConvert.SerializeObject(post), "Post", ViewData);
         }
 
         [HttpPost("postLike")]
         [FormatReponseFilter]
-        public async Task<JsonResult> PostLike([FromBody] JObject jObject)
+        public async Task<IActionResult> PostLike([FromBody] JObject jObject)
         {
             try
             {
                 string postId = jObject["post_id"] == null ? null : jObject["post_id"].ToString();
                 var post = context.Posts.Where(a => a.Id.Equals(postId)).SingleOrDefault();
 
-                bool activiti = false;
+                bool activity = false;
                 if (post.UsersLike.Contains(User.Identity.Name))
                 {
                     post.UsersLike.Remove(User.Identity.Name);
-                    activiti = false;
+                    activity = false;
                 }
                 else
                 {
                     post.UsersLike.Add(User.Identity.Name);
-                    activiti = true;
+                    activity = true;
                 }
 
                 context.Posts.Add(post);
                 context.SaveChangesAsync();
                 //context.SaveChanges();
 
-                return new JsonResult("{'status':true, 'activiti':" + activiti + "}");
+                var j = new
+                {
+                    status = true,
+                    activity = activity
+                };
+                return new MyOjbectResult(j);
             }
             catch (Exception e)
             {
-                return new JsonResult("{'status':false, 'error':'Error: " + e.Message + "'}");
+                var j = new
+                {
+                    status = false,
+                    error = "Error: " + e.Message
+                };
+                return new MyOjbectResult(j);
             }
         }
 
         [HttpPost("commentLike")]
-        public async Task<JsonResult> CommentLike([FromBody] JObject jObject)
+        [FormatReponseFilter]
+        public async Task<IActionResult> CommentLike([FromBody] JObject jObject)
         {
             try
             {
                 string comId = jObject["comment_id"] == null ? null : jObject["comment_id"].ToString();
                 var com = context.Comments.Where(a => a.Id.Equals(comId)).SingleOrDefault();
 
-                bool activiti = false;
+                bool activity = false;
                 if (com.UsersLike.Contains(User.Identity.Name))
                 {
                     com.UsersLike.Remove(User.Identity.Name);
-                    activiti = false;
+                    activity = false;
                 }
                 else
                 {
                     com.UsersLike.Add(User.Identity.Name);
-                    activiti = true;
+                    activity = true;
                 }
 
                 context.Comments.Add(com);
                 context.SaveChangesAsync();
                 //context.SaveChanges();
 
-                return new JsonResult("{'status':true, 'activiti':" + activiti + "}");
+                var j = new
+                {
+                    status = true,
+                    activity = activity
+                };
+
+                return new MyOjbectResult(j);
             }
             catch (Exception e)
             {
-                return new JsonResult("{'status':false, 'error':'Error: " + e.Message + "'}");
+                var j = new JObject();
+                j.Add("status", false);
+                j.Add("error", "Error: "+ e.Message);
+
+                return new MyOjbectResult(j);
             }
         }
 
         [HttpPost("writePost")]
-        public async Task<JsonResult> WritePost([FromBody] JObject jObject)
+        [FormatReponseFilter]
+        public async Task<IActionResult> WritePost([FromBody] JObject jObject)
         {
             try
             {
@@ -163,17 +180,26 @@ namespace ProjectAboutProjects.Controllers.api
                 context.Posts.Add(post);
                 context.SaveChangesAsync();
                 //context.SaveChanges();
+                var j = new
+                {
+                    status = true
+                };
+
+                return new MyOjbectResult(j);
             }
             catch (Exception e)
             {
-                return new JsonResult("{'status':false, 'error':'Error: " + e.Message + "'}");
-            }
+                var j = new JObject();
+                j.Add("status", false);
+                j.Add("error", "Error: " + e.Message);
 
-            return new JsonResult("{'status':true}");
+                return new MyOjbectResult(j);
+            }
         }
 
         [HttpPost("writeComment")]
-        public async Task<JsonResult> WriteComment([FromBody] Newtonsoft.Json.Linq.JObject jObject)
+        [FormatReponseFilter]
+        public async Task<IActionResult> WriteComment([FromBody] Newtonsoft.Json.Linq.JObject jObject)
         {
             try
             {
@@ -191,13 +217,21 @@ namespace ProjectAboutProjects.Controllers.api
                 context.Comments.Add(comment);
                 context.SaveChangesAsync();
                 //context.SaveChanges();
+                var j = new
+                {
+                    status = true
+                };
+
+                return new MyOjbectResult(j);
             }
             catch (Exception e)
             {
-                return new JsonResult("{'status':false, 'error':'Error: " + e.Message + "'}");
-            }
+                var j = new JObject();
+                j.Add("status", false);
+                j.Add("error", "Error: " + e.Message);
 
-            return new JsonResult("{'status':true}");
+                return new MyOjbectResult(j);
+            }
         }
     }
 }

@@ -30,9 +30,11 @@ namespace ProjectAboutProjects.Controllers
         }
 
         [HttpGet]
+        [FormatReponseFilter]
         public async Task<ActionResult> Index()
         {
-            return View();
+            var posts = context.Posts.ToList();
+            return new MyOjbectResult(posts);
         }
        
         [HttpGet]
@@ -44,15 +46,7 @@ namespace ProjectAboutProjects.Controllers
         [HttpGet]
         public async Task<ActionResult> Post()
         {
-            //CHECK ID
             return View();
-        }
-
-        [HttpGet]
-        public async Task<JsonResult> Posts()
-        {
-            var posts = context.Posts.ToList();
-            return Json(posts);//View(posts);
         }
     }
 }
