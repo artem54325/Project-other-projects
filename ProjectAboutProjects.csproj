@@ -37,6 +37,7 @@
     <Folder Include="Views\PostApi\" />
     <Folder Include="Views\University\" />
     <Folder Include="Views\Questions\" />
+    <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Controllers\HomeApiController.cs" />
