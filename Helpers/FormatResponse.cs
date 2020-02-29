@@ -17,6 +17,7 @@ namespace ProjectAboutProjects
             if(_result == null)
             {
                 filterContext.Result = new StatusCodeResult(404);
+                return;
             }
             //var data = new { Data = _result.Value };
             switch (_requestedType)
